@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="design.css">
+    <script src="web.js" defer></script>
+</head>
+<body class="dark-mode">
+    <header>
+        <div class="logo"><a href="/">BLOGG</a></div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="Review.html">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                 <li><a href="favourite.html">blogs read </a></li>
+                 <li><a href="view_favourites.html">Favourite (<span id="favorites-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="latest-posts">
+            <h2>Latest Blog Posts</h2>
+            <article>
+                <h3><a href="blogs/start-successful-blog.html">How to Start a Successful Blog</a></h3>
+                <p>Learn the step-by-step process to create a blog from scratch...</p>
+                <button class="fav-button" data-title="How to Start a Successful Blog" data-link="blogs/start-successful-blog.html"> Add</button>
+            </article>
+            <article>
+                <h3><a href="blogs/monetization-guide.html">Monetizing Your Blog: A Complete Guide</a></h3>
+                <p>Explore different monetization methods, from affiliate marketing to ads...</p>
+                <button class="fav-button" data-title="Monetizing Your Blog: A Complete Guide" data-link="blogs/monetization-guide.html"> Add</button>
+            </article>
+            <article>
+                <h3><a href="blogs/creating-engaging-content.html">Creating Engaging Content: Tips & Tricks</a></h3>
+                <p>Discover how to write compelling blog posts that keep readers engaged...</p>
+                <button class="fav-button" data-title="Creating Engaging Content: Tips & Tricks" data-link="blogs/creating-engaging-content.html"> Add</button>
+            </article>
+            <article>
+                <h3><a href="blogs/another-blog-post.html">Another Interesting Blog Post</a></h3>
+                <p>Brief summary of this other blog post...</p>
+                <button class="fav-button" data-title="Another Interesting Blog Post" data-link="blogs/another-blog-post.html"> Add</button>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 BLOGG. All rights reserved.</p>
+    </footer>
+</body>
+</html>

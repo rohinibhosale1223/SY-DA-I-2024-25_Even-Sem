@@ -1,0 +1,749 @@
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: 'serif', serif;
+    background-color: #1a1a1a;
+    color: #eee;
+    line-height: 1.7;
+}
+
+a {
+    color: #80cbc4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #a7f9ee;
+}
+
+/* Header */
+header {
+    background-color: #222;
+    padding: 25px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #333;
+}
+
+header .logo {
+    font-size: 32px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 10px;
+}
+
+header nav a {
+    color: #eee;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #fff;
+}
+
+header nav a:hover::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+    width: 80%;
+    height: 2px;
+    background-color: #80cbc4;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+header nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Mobile Navigation Toggle */
+.nav-toggle {
+    display: none;
+    background-color: transparent;
+    border: 1px solid #eee;
+    color: #eee;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 8px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-toggle:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.nav-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(128, 203, 196, 0.5);
+}
+
+header nav ul.show {
+    display: block;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #2a2a2a;
+    color: #eee;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.hero p {
+    font-size: 1.1em;
+    color: #ddd;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+/* Services Section */
+.services {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #1a1a1a;
+}
+
+.service-item {
+    background-color: #222;
+    border-radius: 8px;
+    margin: 30px auto;
+    padding: 30px;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.service-item h2 {
+    color: #80cbc4;
+    margin-bottom: 15px;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.service-item p {
+    color: #ddd;
+    line-height: 1.8;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 60px 20px;
+    background-color: #1a1a1a;
+    text-align: center;
+}
+
+.testimonial-item {
+    background-color: #222;
+    border-radius: 8px;
+    margin: 30px auto;
+    padding: 30px;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-style: italic;
+    color: #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.testimonial-item p {
+    font-style: italic;
+    color: #b2dfdb;
+    line-height: 1.8;
+}
+
+
+
+@media (min-width: 768px) {
+    .contact form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact form > h1 {
+        grid-column: 1 / -1;
+    }
+
+    .contact form > button {
+        grid-column: 1 / -1;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.contact form h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333; /* Changed heading color to dark gray for white background */
+    font-size: 36px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Adjusted shadow for light background */
+}
+
+.contact label {
+    display: block;
+    margin-top: 0;
+    color: #555; /* Changed label color to dark gray */
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
+}
+
+.contact label:hover {
+    color: #333; /* Changed hover color */
+}
+
+.contact input,
+.contact textarea {
+    padding: 15px;
+    background-color: #f5f5f5; /* Light gray for input fields */
+    color: #333;
+    border: 1px solid #ccc; /* Lighter border */
+    border-radius: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+    font-size: 1em;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    background-color: #fff;
+    border-color: rgba(0, 0, 0, 0.3);
+    outline: none;
+    box-shadow: 0 4px 10px rgba(128, 203, 196, 0.3);
+    color: #333;
+}
+
+.contact textarea {
+    resize: vertical;
+    min-height: 150px;
+    color: #333;
+    grid-column: 1 / -1;
+}
+
+.contact button {
+    padding: 15px 30px;
+    background-color: #80cbc4;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 1.1em;
+    width: fit-content;
+    margin: 30px auto 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Reduced shadow for light background */
+}
+
+.contact button:hover {
+    background-color: #62a39e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Reduced shadow on hover */
+}
+
+.contact button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(128, 203, 196, 0.5), 0 4px 10px rgba(0, 0, 0, 0.1); /* Reduced shadow on focus */
+}
+
+/* ... (rest of your CSS remains the same) ... */
+
+/* General button */
+.fav-button,
+.remove-btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fav-button:hover,
+.remove-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fav-button:focus,
+.remove-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(128, 203, 196, 0.5), 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.fav-button {
+    background-color: #80cbc4;
+}
+
+.fav-button:hover {
+    background-color: #62a39e;
+}
+
+.fav-button.active {
+    background-color: #00897b;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.remove-btn {
+    background-color: #e53e3e;
+    margin-left: 15px;
+}
+
+.remove-btn:hover {
+    background-color: #c53030;
+}
+
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: #ddd;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    border-top: 1px solid #333;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95em;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #eee;
+}
+
+body.dark-mode a {
+    color: #80cbc4;
+}
+
+body.dark-mode a:hover {
+    color: #a7f9ee;
+}
+
+body.dark-mode header {
+    background-color: #222;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .hero {
+    background-color: #2a2a2a;
+    color: #eee;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .services {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .service-item {
+    background-color: #222;
+    color: #eee;
+    border-color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .testimonials {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .testimonial-item {
+    background-color: #222;
+    color: #eee;
+    border-color: #444;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .contact form {
+    background-color: #333;
+    color: #eee;
+    border-color: #444;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+body.dark-mode .contact input:focus,
+body.dark-mode .contact textarea:focus {
+    border-color: #80cbc4;
+    background-color: #444;
+    box-shadow: 0 3px 7px rgba(128, 203, 196, 0.2);
+    color: #fff;
+}
+
+body.dark-mode .contact button {
+    color: #fff;
+}
+
+body.dark-mode footer {
+    background-color: #222;
+    color: #eee;
+    border-top-color: #333;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    header nav ul.show {
+        display: block;
+    }
+
+    header nav ul li {
+        margin: 15px 0;
+    }
+
+    header nav a {
+        padding: 12px 0;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .hero {
+        padding: 60px 20px;
+        margin: 20px;
+    }
+
+    .services,
+    .testimonials {
+        padding: 40px 10px;
+    }
+
+    .service-item,
+    .testimonial-item {
+        margin: 20px auto;
+        padding: 25px;
+    }
+
+    .contact form {
+        padding: 30px;
+        margin: 20px;
+        gap: 20px;
+        width: 95%;
+    }
+
+    .contact input,
+    .contact textarea {
+        font-size: 1em;
+        padding: 12px;
+        color: #fff;
+    }
+}
+
+/* Improved Contact Form Styles */
+/* ... (rest of your CSS remains the same) ... */
+
+/* Improved Contact Form Styles */
+.contact form {
+    display: grid; /* Changed to grid layout for better structure */
+    grid-template-columns: 1fr; /* Single column by default */
+    gap: 30px;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 50px;
+    background-color:rgba(0, 0, 0, 0.4) ;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
+}
+
+@media (min-width: 768px) {
+    .contact form {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
+    }
+
+    .contact form > h1 { /* Ensure heading spans both columns */
+        grid-column: 1 / -1;
+    }
+
+    .contact form > button { /* Ensure button spans both columns if needed, or adjust */
+        grid-column: 1 / -1; /* Default to span both */
+        width: fit-content; /* Keep button width to content */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.contact form h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #80cbc4;
+    font-size: 36px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.contact label {
+    display: block;
+    margin-top: 0; /* Reduced margin-top as grid provides spacing */
+    color: #80cbc4;
+    font-weight: bold;
+    font-size: 1.1em; /* Slightly reduced label size */
+    transition: color 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.contact label:hover {
+    color: #fff;
+}
+
+.contact input,
+.contact textarea {
+    padding: 15px; /* Slightly reduced padding */
+    background-color: #333;
+    color:#80cbc4 ;
+    border: 1px solid #444;
+    border-radius: 10px; /* Slightly less rounded */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+    font-size: 1em; /* Slightly reduced input size */
+    color: #fff;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    background-color: #444;
+    border-color: #80cbc4;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(128, 203, 196, 0.3);
+    color: #fff;
+}
+
+.contact textarea {
+    resize: vertical;
+    min-height: 150px; /* Adjusted textarea height */
+    color: #eee;
+    grid-column: 1 / -1; /* Make textarea span both columns on larger screens */
+}
+
+.contact button {
+    padding: 15px 30px; /* Adjusted button padding */
+    background-color: #80cbc4;
+    color: #fff;
+    border: none;
+    border-radius: 10px; /* Slightly less rounded */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 1.1em; /* Adjusted button font size */
+    width: fit-content;
+    margin: 30px auto 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact button:hover {
+    background-color: #62a39e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.contact button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(128, 203, 196, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ... (rest of your CSS remains the same) ... */
+
+/* General button */
+.fav-button,
+.remove-btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fav-button:hover,
+.remove-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fav-button:focus,
+.remove-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(128, 203, 196, 0.5), 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.fav-button {
+    background-color: #80cbc4;
+}
+
+.fav-button:hover {
+    background-color: #62a39e;
+}
+
+.fav-button.active {
+    background-color: #00897b;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.remove-btn {
+    background-color:#222 ;
+    margin-left: 15px;
+}
+
+.remove-btn:hover {
+    background-color:#62a39e;
+}
+
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: #ddd;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    border-top: 1px solid #333;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95em;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #eee;
+}
+
+body.dark-mode a {
+    color: #80cbc4;
+}
+
+body.dark-mode a:hover {
+    color: #a7f9ee;
+}
+
+body.dark-mode header {
+    background-color: #222;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .hero {
+    background-color: #2a2a2a;
+    color: #eee;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .services {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .service-item {
+    background-color: #222;
+    color: #eee;
+    border-color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .testimonials {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .testimonial-item {
+    background-color: #222;
+    color: #eee;
+    border-color: #444;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .contact form {
+    background-color: rgba(0, 0, 0, 0.3)
+}

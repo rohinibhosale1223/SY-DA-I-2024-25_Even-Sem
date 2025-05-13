@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | My Blog</title>
+    <link rel="stylesheet" href="design.css">
+    <script src="web.js" defer></script>
+</head>
+<body class="dark-mode">
+    <header>
+        <div class="logo"><a href="/">BLOGG</a></div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="Review.html">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="favourite.html">Blogs Read</a></li>
+                <li><a href="view_favourites.html">Favourite (<span id="favorites-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact">
+        <section class="contact-form">
+            <form id="contact-form">
+                <h1>Contact Us</h1>
+                
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" placeholder="Subject of Your Inquiry" required>
+
+                <label for="phone">Phone (Optional):</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+            
+            <!-- Success Message -->
+            <p id="success-message" style="display: none; color: green; font-weight: bold;">
+                ✅ Your message has been sent successfully!
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Blog | All rights reserved.</p>
+    </footer>
+</body>
+</html>
