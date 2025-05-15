@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - SneakerSphere</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+    <header>
+        <h1>Customer <span> Reviews</span></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Reviwes.html">Reviews</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Product.html">Product</a></li>
+                 <li><a href="about.html">About Us</a></li> 
+                <li><a href="register.html">register</a></li> 
+                <li><a href="cart.html">Cart <span class="cart-count">(0)</span></a></li>
+            
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="reviews">
+        <h2>Leave a Review</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="5">5 - Excellent</option>
+                <option value="4">4 - Good</option>
+                <option value="3">3 - Average</option>
+                <option value="2">2 - Poor</option>
+                <option value="1">1 - Terrible</option>
+            </select>
+            
+            <label for="review">Review:</label>
+            <textarea id="review" name="review" required></textarea>
+            
+            <button type="submit">Submit Review</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 SneakerSphere. All rights reserved.</p>
+    </footer>
+</body>
+</html>
