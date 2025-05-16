@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+.div1 {
+  background-color: #c0c0c0;
+  color: white;
+  padding: 40px 60px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.para1 {
+  color: #e91e63;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.display-inline {
+  display: inline-block;
+  width: 40%;
+}
+
+.div2 {
+  background-color: #fff0f5;
+  padding: 20px;
+  text-align: left;
+}
+
+.float-right {
+  float: right;
+  width: 25%;
+  padding: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+  margin-right: 10px;
+}
+
+.nav-button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #c2185b;
+}
+
+
+        .cart-container {
+            width: 80%;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cart-table th, .cart-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-table th {
+            background: #f0f0f0;
+        }
+        .quantity-btn {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #2196F3;
+            color: white;
+        }
+        .remove-btn {
+            background-color: #e91e63;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .total-container {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+        }
+ .footer {
+  text-align: center;
+}
+ footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+  <div class="div1">
+    <a class="para1"><strong>Modiwear</strong></a>
+  </div>
+
+  <div class="div2">
+    <div class="display-inline">
+      <ul>
+        <li><a href="home.html" class="nav-button">Home</a></li>
+        <li><a href="wp practice.html" class="nav-button">About Us</a></li>
+        <li><a href="service.html" class="nav-button">Services</a></li>
+        <li><a href="ContactM.html" class="nav-button">Contact</a></li>
+        <li><a href="Product.html" class="nav-button">Product</a></li>
+      </ul>
+    </div>
+
+    <div class="div2 display-inline float-right">
+      <a href="loginpage.html" class="nav-button">Login</a>
+      <a href="Register.html" class="nav-button">Register</a>
+
+<a href="cart.html" class="nav-button">Cart <span id="cart-count">(0)</span></a>
+  </div>
+
+
+<div class="cart-container">
+    <h2>Shopping Cart</h2>
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price (Rs.)</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+    </table>
+    <div class="total-container">
+        Total Amount: Rs. <span id="total-price">0</span>
+    </div>
+</div>
+
+<script>
+// Load cart from localStorage
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const cartCount = document.getElementById('cart-count');
+const cartItemsContainer = document.getElementById('cart-items');
+const totalPriceContainer = document.getElementById('total-price');
+
+// Update Cart Count in Navbar
+function updateCartCount() {
+    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = `(${totalItems})`;
+}
+
+// Display Cart Items
+function displayCart() {
+    cartItemsContainer.innerHTML = ""; // Clear previous content
+    let totalAmount = 0;
+
+    cart.forEach((item, index) => {
+        let row = document.createElement('tr');
+
+        let nameCell = document.createElement('td');
+        nameCell.textContent = item.name;
+        row.appendChild(nameCell);
+
+        let priceCell = document.createElement('td');
+        priceCell.textContent = item.price;
+        row.appendChild(priceCell);
+
+        let quantityCell = document.createElement('td');
+        let decreaseBtn = document.createElement('button');
+        decreaseBtn.textContent = "-";
+        decreaseBtn.classList.add("quantity-btn");
+        decreaseBtn.onclick = () => changeQuantity(index, -1);
+        
+        let quantitySpan = document.createElement('span');
+        quantitySpan.textContent = item.quantity;
+        quantitySpan.style.margin = "0 10px";
+
+        let increaseBtn = document.createElement('button');
+        increaseBtn.textContent = "+";
+        increaseBtn.classList.add("quantity-btn");
+        increaseBtn.onclick = () => changeQuantity(index, 1);
+
+        quantityCell.appendChild(decreaseBtn);
+        quantityCell.appendChild(quantitySpan);
+        quantityCell.appendChild(increaseBtn);
+        row.appendChild(quantityCell);
+
+        let totalCell = document.createElement('td');
+        totalCell.textContent = item.price * item.quantity;
+        row.appendChild(totalCell);
+
+        let actionCell = document.createElement('td');
+        let removeBtn = document.createElement('button');
+        removeBtn.textContent = "Remove";
+        removeBtn.classList.add("remove-btn");
+        removeBtn.onclick = () => removeFromCart(index);
+        actionCell.appendChild(removeBtn);
+        row.appendChild(actionCell);
+
+        cartItemsContainer.appendChild(row);
+        totalAmount += item.price * item.quantity;
+    });
+
+    totalPriceContainer.textContent = totalAmount;
+    updateCartCount();
+}
+
+// Change Quantity
+function changeQuantity(index, change) {
+    if (cart[index].quantity + change > 0) {
+        cart[index].quantity += change;
+    } else {
+        cart[index].quantity = 1; // Prevent removing items on decrease
+    }
+    localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
+    displayCart(); // Refresh cart display
+}
+
+// Remove Item from Cart
+function removeFromCart(index) {
+    cart.splice(index, 1); // Remove item at index
+    localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
+    displayCart(); // Refresh cart display
+}
+
+// Initialize Page
+displayCart();
+
+</script>
+
+</body>
+</html>

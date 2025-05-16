@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+.div1 {
+  background-color: #c0c0c0;
+  color: white;
+  padding: 40px 60px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.para1 {
+  color: #e91e63;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.display-inline {
+  display: inline-block;
+  width: 40%;
+}
+
+.div2 {
+  background-color: #fff0f5;
+  padding: 20px;
+  text-align: left;
+}
+
+.float-right {
+  float: right;
+  width: 25%;
+  padding: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+  margin-right: 10px;
+}
+
+.nav-button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #c2185b;
+}
+
+
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; }
+
+form {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px #aaa;
+  display: inline-block;
+}
+input, select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+button:hover {
+  background-color: #c2185b;
+}
+
+.footer {
+  text-align: center;
+}
+ footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+</style>
+</head>
+<body>
+<div class="div1">
+    <a class="para1"><strong>Modiwear</strong></a>
+  </div>
+
+  <div class="div2">
+    <div class="display-inline">
+      <ul>
+        <li><a href="home.html" class="nav-button">Home</a></li>
+        <li><a href="wp practice.html" class="nav-button">About Us</a></li>
+        <li><a href="service.html" class="nav-button">Services</a></li>
+        <li><a href="ContactM.html" class="nav-button">Contact</a></li>
+        <li><a href="Product.html" class="nav-button">Product</a></li>
+      </ul>
+    </div>
+
+    <div class="div2 display-inline float-right">
+      <a href="loginpage.html" class="nav-button">Login</a>
+      <a href="Register.html" class="nav-button">Register</a>
+<a href="cart.html" class="nav-button">Cart <span id="cart-count">(0)</span></a>
+    </div>
+  </div>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="userType">Login as:</label>
+        <select id="userType">
+            <option value="customer">Customer</option>
+            <option value="seller">Seller</option>
+        </select>
+
+        <label for="email">Email:</label>
+        <input type="email" class="box" placeholder="Enter Email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" class="box" placeholder="Enter Password" id="password" required>
+
+        <button type="button" id="show-pass">Show Password</button>
+        <input type="submit" id="submit-btn" value="Login" disabled>
+
+        <div class="msg"></div>
+    </form>
+</div>
+
+<script>
+    var email = document.getElementById('email');
+    var pass = document.getElementById('password');
+    var submit = document.getElementById('submit-btn');
+    var showPass = document.getElementById('show-pass');
+    var msgElement = document.querySelector('.msg');
+
+    var validEmail = false;
+    var validPass = false;
+   document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const enteredEmail = document.getElementById("loginEmail").value;
+      const enteredPassword = document.getElementById("loginPassword").value;
+
+      const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+
+      if (userDetails && userDetails.Email === enteredEmail && userDetails.Password === enteredPassword) {
+        alert("Login successful!");
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "home.html";
+      } else {
+        alert("Invalid email or password!");
+      }
+    });
+    email.addEventListener('input', function() {
+        validEmail = email.value.length >= 6;
+        email.style.borderColor = validEmail ? 'green' : 'red';
+        toggleSubmit();
+    });
+
+    pass.addEventListener('input', function() {
+        validPass = pass.value.length >= 6;
+        pass.style.borderColor = validPass ? 'green' : 'red';
+        toggleSubmit();
+    });
+
+    showPass.addEventListener('click', function() {
+        if (pass.type === 'password') {
+            pass.type = 'text';
+            showPass.textContent = 'Hide Password';
+        } else {
+            pass.type = 'password';
+            showPass.textContent = 'Show Password';
+        }
+    });
+
+    function toggleSubmit() {
+        submit.disabled = !(validEmail && validPass);
+    }
+
+    // Form Submission Handling
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        msgElement.textContent = "Login Successful!"; // Temporary success message
+        msgElement.style.color = "green";
+
+        // Simulate login or send data to backend here
+        console.log("Email:", email.value);
+        console.log("Password:", pass.value);
+    });
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartCount = document.getElementById('cart-count');
+
+  function updateCartCount() {
+    cartCount.textContent = `(${cart.length})`;
+  }
+
+  function addToCart(name, price) {
+    let product = { name, price };
+    if (!cart.find(item => item.name === name)) {
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+  }
+
+  window.onload = function() {
+    updateCartCount();
+    document.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", function() {
+        updateCartCount();
+      });
+    });
+  };
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let userType = document.getElementById("userType").value;
+            if (userType === "seller") {
+                window.location.href = "seller.html";
+            } else {
+                window.location.href = "home.html";
+            }
+        });
+    </script>
+</body>
+</html>

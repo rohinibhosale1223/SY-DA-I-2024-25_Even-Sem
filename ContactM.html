@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+.div1 {
+  background-color: #c0c0c0;
+  color: white;
+  padding: 40px 60px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.para1 {
+  color: #e91e63;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.display-inline {
+  display: inline-block;
+  width: 40%;
+}
+
+.div2 {
+  background-color: #fff0f5;
+  padding: 20px;
+  text-align: left;
+}
+
+.float-right {
+  float: right;
+  width: 25%;
+  padding: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+  margin-right: 10px;
+}
+
+.nav-button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #c2185b;
+}
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #e91e63;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .contact-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .contact-section h2 {
+            color: #e91e63;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+.footer {
+  text-align: center;
+}
+ footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+  <div class="div1">
+    <a class="para1"><strong>Modiwear</strong></a>
+  </div>
+
+  <div class="div2">
+    <div class="display-inline">
+      <ul>
+        <li><a href="home.html" class="nav-button">Home</a></li>
+        <li><a href="wp practice.html" class="nav-button">About Us</a></li>
+        <li><a href="service.html" class="nav-button">Services</a></li>
+        <li><a href="ContactM.html" class="nav-button">Contact</a></li>
+        <li><a href="Product.html" class="nav-button">Product</a></li>
+      </ul>
+    </div>
+
+    <div class="div2 display-inline float-right">
+      <a href="loginpage.html" class="nav-button">Login</a>
+      <a href="Register.html" class="nav-button">Register</a>
+
+<a href="cart.html" class="nav-button">Cart <span id="cart-count">(0)</span></a>
+  </div>
+
+    <div class="container">
+        <div class="contact-section">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+  <script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartCount = document.getElementById('cart-count');
+
+  function updateCartCount() {
+    cartCount.textContent = `(${cart.length})`;
+  }
+
+  function addToCart(name, price) {
+    let product = { name, price };
+    if (!cart.find(item => item.name === name)) {
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+  }
+
+  window.onload = function() {
+    updateCartCount();
+    document.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", function() {
+        updateCartCount();
+      });
+    });
+  };
+</script>  
+    <footer>
+        <p>&copy; 2025 Modiwear</p>
+    </footer>
+</body>
+</html>

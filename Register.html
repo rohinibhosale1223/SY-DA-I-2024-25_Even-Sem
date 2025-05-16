@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+.div1 {
+  background-color: #c0c0c0;
+  color: white;
+  padding: 40px 60px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.para1 {
+  color: #e91e63;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.display-inline {
+  display: inline-block;
+  width: 40%;
+}
+
+.div2 {
+  background-color: #fff0f5;
+  padding: 20px;
+  text-align: left;
+}
+
+.float-right {
+  float: right;
+  width: 25%;
+  padding: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+  margin-right: 10px;
+}
+
+.nav-button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #c2185b;
+}
+
+
+
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; }
+
+form {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px #aaa;
+  display: inline-block;
+}
+input, select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+button:hover {
+  background-color: #c2185b;
+}
+.footer {
+  text-align: center;
+}
+ footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+</style>
+</head>
+<body>
+<div class="div1">
+    <a class="para1"><strong>Modiwear</strong></a>
+  </div>
+
+  <div class="div2">
+    <div class="display-inline">
+      <ul>
+        <li><a href="home.html" class="nav-button">Home</a></li>
+        <li><a href="wp practice.html" class="nav-button">About Us</a></li>
+        <li><a href="service.html" class="nav-button">Services</a></li>
+        <li><a href="ContactM.html" class="nav-button">Contact</a></li>
+        <li><a href="Product.html" class="nav-button">Product</a></li>
+      </ul>
+    </div>
+
+    <div class="div2 display-inline float-right">
+      <a href="loginpage.html" class="nav-button">Login</a>
+      <a href="Register.html" class="nav-button">Register</a>
+<a href="cart.html" class="nav-button">Cart <span id="cart-count">(0)</span></a>
+    </div>
+  </div>
+
+
+    <div class="register-container">
+      <form id="registerForm" action="/modiwear/connect.php" method="post">
+        <h2>Registration Form</h2>
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" name="firstname" placeholder="Enter First Name" required>
+        
+        <label for="lastname">Last Name</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Enter Last Name" required>
+        
+        <label for="username">User Name</label>
+        <input type="text" id="username" name="username" placeholder="Enter User Name" required>
+        
+<label for="email">Email-Id</label>
+<input type="text" id="email" name="email" placeholder="Enter Email-Id" required>
+        <label for="pass">Password</label>
+        <input type="password" id="pass" name="pass" placeholder="Enter Password" required>
+        <button type="button" id="show-pass">Show Password</button>
+        
+        <label for="userType">Register as:</label>
+        <select id="userType" name="userType" required>
+            <option value="customer">Customer</option>
+            <option value="seller">Seller</option>
+        </select>
+        
+        <input type="submit" id="submit-btn" value="Register" disabled>
+        <div class="msg"></div>
+    </form>
+    </div>
+
+<script>
+var username = document.getElementById('username');
+var pass = document.getElementById('pass');
+var submit = document.getElementById('submit-btn');
+var showPass = document.getElementById('show-pass');
+var userType = document.getElementById('userType');
+
+var validUsername = false;
+var validPass = false;
+  document.getElementById("registerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const userDetails = {
+        Firstname: document.getElementById("fname").value,
+        Lastname: document.getElementById("lname").value,
+        Email: document.getElementById("email").value,
+        Password: document.getElementById("password").value,
+      };
+
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+      alert("Registration successful!");
+      window.location.href = "loginpage.html";
+    });
+username.addEventListener('input', function() {
+    validUsername = username.value.length >= 6;
+    username.style.borderColor = validUsername ? 'green' : 'red';
+    toggleSubmit();
+});
+
+pass.addEventListener('input', function() {
+    validPass = pass.value.length >= 6;
+    pass.style.borderColor = validPass ? 'green' : 'red';
+    toggleSubmit();
+});
+
+showPass.addEventListener('click', function() {
+    if (pass.type === 'password') {
+        pass.type = 'text';
+        showPass.textContent = 'Hide Password';
+    } else {
+        pass.type = 'password';
+        showPass.textContent = 'Show Password';
+    }
+});
+function togglePass(event){
+event.preventDefault(event);
+if(pass.getAttribute('type')==='text'){
+pass.setAttribute('type','password');
+showPass.innnerHTML='Show Password';
+}
+else{
+pass.setAttribute('type','text');
+showPass.innerHTML='HidePassword';
+}
+}
+function toggleSubmit() {
+    submit.disabled = !(validUsername && validPass);
+}
+
+document.getElementById("registerForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    let selectedUserType = userType.value;
+    if (selectedUserType === "seller") {
+        window.location.href = "seller.html";
+    } else {
+        window.location.href = "home.html";
+    }
+});
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartCount = document.getElementById('cart-count');
+
+  function updateCartCount() {
+    cartCount.textContent = `(${cart.length})`;
+  }
+
+  function addToCart(name, price) {
+    let product = { name, price };
+    if (!cart.find(item => item.name === name)) {
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+  }
+
+  window.onload = function() {
+    updateCartCount();
+    document.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", function() {
+        updateCartCount();
+      });
+    });
+  };
+</script>
+</body>
+</html>
