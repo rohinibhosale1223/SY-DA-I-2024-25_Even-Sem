@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input.box {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #show-pass {
+            margin-top: 10px;
+            background: none;
+            border: none;
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        #submit-btn {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        #submit-btn:enabled {
+            opacity: 1;
+        }
+
+        .msg {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<form action="login.php" method="POST">
+    <h2>Sports Gear Login</h2>
+    
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <input type="submit" value="Login">
+</form>
+
+    <script>
+        const submit = document.getElementById('submit-btn');
+        const msgElement = document.querySelector('.msg');
+        const showPassBtn = document.getElementById('show-pass');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('pass');
+
+        const validUser = "OjasUmate";
+        const validPass = "Ojas@123";
+
+        // Enable login button when both fields are filled
+        usernameInput.addEventListener('input', validateForm);
+        passwordInput.addEventListener('input', validateForm);
+
+        function validateForm() {
+            if (usernameInput.value.trim() && passwordInput.value.trim()) {
+                submit.disabled = false;
+            } else {
+                submit.disabled = true;
+            }
+        }
+
+        // Toggle password visibility
+        showPassBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+            showPassBtn.textContent = passwordInput.type === "password" ? "Show Password" : "Hide Password";
+        });
+
+        // Handle form submission
+        submit.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            let enteredUser = usernameInput.value.trim();
+            let enteredPass = passwordInput.value;
+
+            if (enteredUser === validUser && enteredPass === validPass) {
+                msgElement.style.color = 'green';
+                msgElement.textContent = 'Successfully logged in';
+
+                localStorage.setItem('userDetails', JSON.stringify({ username: enteredUser }));
+
+                setTimeout(() => {
+                    window.location.href = "homepage.html";
+                }, 2000);
+            } else {
+                msgElement.style.color = 'red';
+                msgElement.textContent = 'Invalid Username or Password';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.3s ease-in-out;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 16px;
+            color: #777;
+        }
+
+        .valid {
+            border: 2px solid green !important;
+        }
+
+        .invalid {
+            border: 2px solid red !important;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 3px;
+            height: 14px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 16px;
+            opacity: 0.5;
+            transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:enabled {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form action="register.php" method="POST">
+    <h2>Register</h2>
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br><br>
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+    <input type="submit" value="Register">
+</form>
+        <p id="successMessage" style="color: green; display: none;">Registration successful! Redirecting...</p>
+    </div>
+
+    <script>
+        const form = document.getElementById("registrationForm");
+        const usernameField = document.getElementById("username");
+        const passwordField = document.getElementById("password");
+        const confirmPasswordField = document.getElementById("confirmPassword");
+        const registerButton = document.getElementById("registerButton");
+
+        const validationRules = {
+            username: {
+                regex: /^[a-zA-Z0-9]{5,}$/,
+                errorMsg: "Username must be at least 5 characters and contain only letters and numbers."
+            },
+            password: {
+                regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,16}$/,
+                errorMsg: "Password must be 6-16 characters, with uppercase, lowercase, number, and special character."
+            }
+        };
+
+        function validateField(field, rule) {
+            const value = field.value.trim();
+            const errorElement = document.getElementById(field.id + "Error");
+
+            if (rule.regex.test(value)) {
+                field.classList.add("valid");
+                field.classList.remove("invalid");
+                errorElement.textContent = "";
+                return true;
+            } else {
+                field.classList.add("invalid");
+                field.classList.remove("valid");
+                errorElement.textContent = rule.errorMsg;
+                return false;
+            }
+        }
+
+        function validateConfirmPassword() {
+            const password = passwordField.value;
+            const confirmPassword = confirmPasswordField.value;
+            const errorElement = document.getElementById("confirmPasswordError");
+
+            if (confirmPassword === password && confirmPassword !== "") {
+                confirmPasswordField.classList.add("valid");
+                confirmPasswordField.classList.remove("invalid");
+                errorElement.textContent = "";
+                return true;
+            } else {
+                confirmPasswordField.classList.add("invalid");
+                confirmPasswordField.classList.remove("valid");
+                errorElement.textContent = "Passwords do not match.";
+                return false;
+            }
+        }
+
+        function validateForm() {
+            const isUsernameValid = validateField(usernameField, validationRules.username);
+            const isPasswordValid = validateField(passwordField, validationRules.password);
+            const isConfirmPasswordValid = validateConfirmPassword();
+
+            registerButton.disabled = !(isUsernameValid && isPasswordValid && isConfirmPasswordValid);
+        }
+
+        function togglePassword(fieldId, icon) {
+            const field = document.getElementById(fieldId);
+            if (field.type === "password") {
+                field.type = "text";
+                icon.textContent = "🙈";  // Hide Password Icon
+            } else {
+                field.type = "password";
+                icon.textContent = "👁️";  // Show Password Icon
+            }
+        }
+
+        usernameField.addEventListener("input", validateForm);
+        passwordField.addEventListener("input", validateForm);
+        confirmPasswordField.addEventListener("input", validateForm);
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            document.getElementById("successMessage").style.display = "block";
+            setTimeout(() => window.location.href = "homepage.html", 2000);
+        });
+    </script>
+
+</body>
+</html>

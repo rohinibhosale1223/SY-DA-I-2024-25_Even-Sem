@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Sports Gear Accessories</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="cart.html">Cart <span id="cart-count">(0)</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Cart Section -->
+  <main>
+    <h1>Your Cart</h1>
+    <div id="cart-items">
+      <!-- Cart items will be dynamically loaded here -->
+    </div>
+    <div id="cart-summary">
+      <p>Total Items: <span id="total-items">0</span></p>
+      <p>Total Price: $<span id="total-price">0.00</span></p>
+      <button id="checkout" disabled>Proceed to Checkout</button>
+    </div>
+  </main>
+
+  <script>
+    // Retrieve cart data from localStorage
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItemsContainer = document.getElementById('cart-items');
+      const totalItemsElement = document.getElementById('total-items');
+      const totalPriceElement = document.getElementById('total-price');
+      const checkoutButton = document.getElementById('checkout');
+
+      // Clear previous cart display
+      cartItemsContainer.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        totalItemsElement.textContent = '0';
+        totalPriceElement.textContent = '0.00';
+        checkoutButton.disabled = true;
+        return;
+      }
+
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      cart.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        cartItem.innerHTML = `
+
+          <div class="cart-item-details">
+            <h3>${item.name}</h3>
+            <p>Price: $${item.price}</p>
+          </div>
+          <div class="cart-item-actions">
+            <input type="number" min="1" value="1" data-index="${index}" class="item-quantity">
+            <button data-index="${index}" class="remove-item">Remove</button>
+          </div>
+        `;
+
+        cartItemsContainer.appendChild(cartItem);
+
+        totalItems += 1; // Default quantity is 1
+        totalPrice += parseFloat(item.price);
+      });
+
+      totalItemsElement.textContent = totalItems;
+      totalPriceElement.textContent = totalPrice.toFixed(2);
+      checkoutButton.disabled = false;
+    }
+
+    // Update cart count in the navigation bar
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      document.getElementById('cart-count').textContent = `(${cart.length})`;
+    }
+
+    // Update total price and item count when quantity is changed
+    function updateQuantity(event) {
+      const index = event.target.getAttribute('data-index');
+      const newQuantity = parseInt(event.target.value);
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      if (newQuantity > 0) {
+        cart[index].quantity = newQuantity || 1;
+      } else {
+        event.target.value = 1; // Reset invalid quantity
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      recalculateCart();
+    }
+
+    // Recalculate total items and price
+    function recalculateCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalItemsElement = document.getElementById('total-items');
+      const totalPriceElement = document.getElementById('total-price');
+
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      cart.forEach(item => {
+        const itemQuantity = item.quantity || 1;
+        totalItems += itemQuantity;
+        totalPrice += item.price * itemQuantity;
+      });
+
+      totalItemsElement.textContent = totalItems;
+      totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+
+    // Remove an item from the cart
+    function removeItem(event) {
+      const index = event.target.getAttribute('data-index');
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+      updateCartCount();
+    }
+
+    // Event Listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCart();
+      updateCartCount();
+
+      // Attach event listener for removing items
+      document.getElementById('cart-items').addEventListener('click', (event) => {
+        if (event.target.classList.contains('remove-item')) {
+          removeItem(event);
+        }
+      });
+
+      // Attach event listener for updating quantities
+      document.getElementById('cart-items').addEventListener('input', (event) => {
+        if (event.target.classList.contains('item-quantity')) {
+          updateQuantity(event);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

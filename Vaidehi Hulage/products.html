@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Sports Gear Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Sports Gear Shop</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart <span id="cart-count">(0)</span></a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="menu">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images-gloves.jpg" alt="Gloves">
+                <h3>Gloves</h3>
+                <p>Comfortable and durable sports gloves for any activity.</p>
+                <p class="price">$25.00</p>
+                <button class="add-to-cart" data-id="1">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="images-bag.jpg" alt="Sports Bag">
+                <h3>Sports Bag</h3>
+                <p>Lightweight and spacious, perfect for all sports gear.</p>
+                <p class="price">$40.00</p>
+                <button class="add-to-cart" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="images-wrist-guard.jpg" alt="Wrist Guard">
+                <h3>Wrist Guard</h3>
+                <p>Protect your wrists during intense activities.</p>
+                <p class="price">$20.00</p>
+                <button class="add-to-cart" data-id="3">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="images-water-bottle.jpg" alt="Water Bottle">
+                <h3>Water Bottle</h3>
+                <p>Durable, eco-friendly bottles to keep you hydrated.</p>
+                <p class="price">$15.00</p>
+                <button class="add-to-cart" data-id="4">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Sample Product Data
+        const products = [
+            { id: 1, name: "Gloves", price: 25.00 },
+            { id: 2, name: "Sports Bag", price: 40.00 },
+            { id: 3, name: "Wrist Guard", price: 20.00 },
+            { id: 4, name: "Water Bottle", price: 15.00 }
+        ];
+
+        // Add to Cart Functionality
+        function addToCart(productId) {
+            const product = products.find((p) => p.id === parseInt(productId));
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push(product);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        // Update Cart Count
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            document.getElementById("cart-count").textContent = `(${cart.length})`;
+        }
+
+        // Event Listeners
+        document.addEventListener("DOMContentLoaded", () => {
+            updateCartCount();
+
+            document.querySelectorAll(".add-to-cart").forEach(button => {
+                button.addEventListener("click", (event) => {
+                    const productId = event.target.getAttribute("data-id");
+                    addToCart(productId);
+                    alert("Item added to cart!");
+                });
+            });
+        });
+    </script>
+    <footer>
+        <p>&copy; 2025 Sports Gear Accessories Shop. All rights reserved.</p>
+    </footer>
+</body>
+</html>
