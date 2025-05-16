@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Room Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 40px;
+    }
+    form {
+      background: white;
+      max-width: 400px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    .box {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button, input[type="submit"] {
+      padding: 10px;
+      background: #2f2d33;
+      border: none;
+      color: white;
+      width: 100%;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button:hover, input[type="submit"]:hover {
+      background: #2f2d33;
+    }
+    .msg {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<form id="login-form">
+  <h2>Login Form</h2>
+  <label for="username">Username</label>
+  <input type="text" class="box" id="username" placeholder="Enter Username" required>
+
+  <label for="pass">Password</label>
+  <input type="password" class="box" id="pass" placeholder="Enter Password" required>
+
+  <button id="show-pass">Show Password</button>
+  <input type="submit" id="submit-btn" value="Login" disabled>
+
+  <div class="msg" id="login-msg"></div>
+</form>
+
+<script>
+  const username = document.getElementById('username');
+  const pass = document.getElementById('pass');
+  const submit = document.getElementById('submit-btn');
+  const showPass = document.getElementById('show-pass');
+  const msgElement = document.getElementById('login-msg');
+
+  let validUsername = false;
+  let validPass = false;
+
+  username.addEventListener('input', () => {
+    validUsername = username.value.length > 0;
+    checkValidity();
+  });
+
+  pass.addEventListener('input', () => {
+    validPass = pass.value.length > 0;
+    checkValidity();
+  });
+
+  function checkValidity() {
+    submit.disabled = !(validUsername && validPass);
+  }
+
+  showPass.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (pass.type === 'password') {
+      pass.type = 'text';
+      showPass.textContent = 'Hide Password';
+    } else {
+      pass.type = 'password';
+      showPass.textContent = 'Show Password';
+    }
+  });
+
+  document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const storedUser = JSON.parse(localStorage.getItem('userDetails'));
+    if (
+      storedUser &&
+      storedUser.username === username.value &&
+      storedUser.password === pass.value
+    ) {
+      msgElement.style.color = 'green';
+      msgElement.textContent = 'Login Successful!';
+      setTimeout(() => {
+        window.location = 'home.html';
+      }, 2000);
+    } else {
+      msgElement.style.color = 'red';
+      msgElement.textContent = 'Invalid Username or Password!';
+    }
+  });
+</script>
+
+</body>
+</html>
