@@ -1,0 +1,129 @@
+.menu-item.active {
+    color: blue;
+}
+a {
+    color: rgb(255, 255, 255);
+}
+a:hover {
+    color: cyan; /* Change color on hover */
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan; /* Glowing effect */
+}
+.blah{
+    background: rgb(100, 100, 100);
+    color: rgb(255, 255, 255);
+    padding:5px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;}
+.blah figure{
+    text-align: center;
+    text-transform:uppercase;
+    margin:auto;
+    width:400px;}
+.blah figure img{
+    border-radius: 30px;
+    box-shadow: Purple 8px  10px 100px;
+    width:200px;
+    margin:20px;
+    padding:0px;}
+/*@media screen and (max-width:800px){
+    .blah{
+        display: block;
+    }}*/
+a{
+    text-decoration:none;}
+body{
+    background:rgb(0, 0, 0);
+    color:WHITE;
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin:0px;
+    padding:0px;}
+li a{
+    text-align: center;
+    width:40px;
+    height:20px;
+    padding:10px;
+    margin: 0px;}
+li a:hover{
+    text-decoration:underline;
+    box-shadow: White;
+}
+h1{
+    text-align: center;}
+header{
+    background-image: url(Images/Banner.jpg);
+    background-size: 100% 100%;
+    text-align: center;}
+header a{
+    color:rgb(255, 140, 0);
+    display:inline;}
+header .logo a{
+    background-image:url(Images/Logo.jpg);
+    background-size: 100%;
+    background-repeat:no-repeat;
+    display:inline-block;
+    height:80px;
+    position:relative;
+    text-indent: -999999px;
+    top:20px;
+    width:400px;}
+.mobile{
+    display:none;}
+@media screen and (max-width:984px) {
+    header{
+        height:300px;
+    }
+    .destop{
+        display:none;
+    }
+    .mobile{
+        display:inline-block;
+    }}
+@media screen and (max-width:800px) {
+    header{
+        font-size: 14px;
+        height:500px;
+    }}
+section{
+    Background:rgb(71, 71, 71);
+    padding:20px;
+    display:flex;
+    flex-direction:row;}
+section div{
+    text-align: center;
+    border-radius:40px;
+    color:black;
+    padding: 100px; 
+    margin:auto;
+    background:rgb(199, 199, 199);
+    width:300px;            
+    height:100px;}
+ul{
+    margin:0;
+    padding: 0;
+    list-style-type: none;}
+li{
+    display:inline;
+    margin:20px ;}
+nav{
+    padding: 30px;}
+footer{
+    background:rgb(42, 41, 41);
+    padding:40px;
+    text-align: center;
+    font-size:10px;
+    font-style: italic;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+/*@media screen and (max-width:1000px) {
+    footer{
+        background-color:yellow;
+        color:green;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width:800px) {
+    footer{
+        background-color:pink;
+        color: black;}}
+        */

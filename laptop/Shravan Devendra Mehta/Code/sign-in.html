@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Car Enthusiast Hub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .signup-container {
+            width: 300px;
+            background: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 100px auto;
+            color: white;
+        }
+        .signup-container input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .signup-container button {
+            width: 100%;
+            padding: 10px;
+            background: orange;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+        .signup-container button:hover {
+            background: darkorange;
+        }
+        .center-link {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .center-link a {
+            color: orange;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .center-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function redirectToLogin(event) {
+            event.preventDefault();
+            alert("Account created successfully!");
+            window.location.href = 'login-page.html';
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+            <li class="logo"><a href="../index.html">Logo</a></li><br><br><br><hr>
+            <li class="to"><a href="../index.html">Home</a></li>
+            <li class="mobile"><a class="menu-item active" href="location.html">Location</a></li>
+            <li class="to"><a href="about-us.html">About Us</a></li>
+            <li class="mobile"><a href="contact.html">Contact</a></li>
+            <li class="mobile"><a href="login-page.html">Log-In/Register</a></li>
+            <li class="destop"><a class="menu-item active" href="location.html">Location</a></li>
+            <li class="destop"><a href="contact.html">Contact</a></li>
+            <li class="destop"><a href="login-page.html">Log-In/Register</Log-In></a></li>
+            <li class="destop"><a href="Cart page.html">My Cart</Log-In></a></li>
+            </ul>
+        </nav>
+        <h1>Car Enthusiast Hub - Sign Up</h1>
+    </header>
+
+    <section class="signup-container">
+        <form onsubmit="redirectToLogin(event)">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+        <p class="center-link">Already have an account? <a href="login-page.html">Log in</a></p>
+    </section>
+
+    <footer>
+        <hr>
+        <h2>Mr.Mehta.Company.Lim®</h2>
+        <hr>
+        ‱ Money accepted in any format
+    </footer>
+</body>
+</html>
