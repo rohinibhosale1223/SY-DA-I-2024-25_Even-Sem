@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthcare Info</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #0077b6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .navbar .logo {
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: #ff6f61;
+      text-decoration: underline;
+    }
+
+    .navbar .auth-btn {
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .navbar .auth-btn {
+      background-color: transparent;
+      color: #fff;
+    }
+
+    header {
+      background-color: #2e86de;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      background-image: url('header-image.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    header h1 {
+      font-size: 40px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 20px;
+    }
+
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .services {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .service-box {
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: 250px;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background-color: #2e86de;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .contact button {
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact button:hover {
+      background-color: #023e8a;
+    }
+
+    .form-section input,
+    .form-section select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .form-section button {
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .service-box {
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">My HealthCare</div>
+        <ul>
+          <li><a href="service.html">Service</a></li>
+          <li><a href="bookappointment.html">Book Appointment</a></li>
+          <li><a href="#tips">Health Tips</a></li>
+          <li><a href="product.html">Product</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="registration.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#service">Service</a></li>
+
+        </ul>
+      </div>
+      
+
+  <header>
+    <h1>Welcome to My HealthCare</h1>
+    <p>Your Health is Our Priority</p>
+  </header>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-box">
+        <h3>Doctor Consultation</h3>
+        <p>Talk to our expert doctors anytime.</p>
+      </div>
+      <div class="service-box">
+        <h3>Lab Tests</h3>
+        <p>Affordable and accurate lab testing.</p>
+      </div>
+      <div class="service-box">
+        <h3>Home Care</h3>
+        <p>Nurses and support at your doorstep.</p>
+      </div>
+      <div class="service-box">
+        <h3>Emergency Services</h3>
+        <p>24/7 ambulance and trauma support.</p>
+      </div>
+      <div class="service-box">
+        <h3>Mental Health Counseling</h3>
+        <p>Talk to certified counselors confidentially.</p>
+      </div>
+      <div class="service-box">
+        <h3>Vaccination & Immunization</h3>
+        <p>COVID-19, flu, and other vaccinations available.</p>
+      </div>
+      <div class="service-box">
+        <h3>Online Prescription</h3>
+        <p>Get your prescriptions online without hassle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <h2>Health Tips</h2>
+    <ul>
+      <li>Drink plenty of water daily.</li>
+      <li>Exercise for at least 30 minutes a day.</li>
+      <li>Eat more fruits and vegetables.</li>
+      <li>Avoid junk food and sugary drinks.</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="py-20 px-4 bg-white text-center">
+    <h3 class="text-3xl font-bold mb-6">Get In Touch</h3>
+    <p class="mb-8 text-lg text-gray-600">We’re here to answer any questions or provide assistance. Feel free to reach out to us.</p>
+    <form class="max-w-xl mx-auto space-y-4">
+      <input type="text" placeholder="Your Name" class="w-full p-3 border rounded-lg" required />
+      <input type="email" placeholder="Your Email" class="w-full p-3 border rounded-lg" required />
+      <textarea placeholder="Your Message" class="w-full p-3 border rounded-lg" rows="4" required></textarea>
+      <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+        Send Message
+      </button>
+    </form>
+  </section>
+
+</body>
+</html>

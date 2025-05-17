@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - My HealthCare</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .navbar {
+      background-color: #0077b6;
+      padding: 10px;
+      color: white;
+    }
+
+    .navbar a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+
+    .cart-items {
+      margin-top: 20px;
+    }
+
+    .cart-item {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-item button {
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .cart-item button:hover {
+      background-color: #e05e4f;
+    }
+
+    .total {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="p.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+    <a href="registration.html">Register</a>
+    <a href="login.html">Login</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <h2>Shopping Cart</h2>
+
+  <div class="cart-items" id="cartItems">
+  </div>
+
+  <div class="total" id="total">
+    Total: ₹<span id="totalAmount">0.00</span>
+  </div>
+
+  <footer>
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartCount() {
+      const cartCount = document.getElementById('cartCount');
+      cartCount.textContent = cart.length;
+    }
+
+    function displayCartItems() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const totalAmountElement = document.getElementById('totalAmount');
+      let totalAmount = 0;
+
+      cartItemsContainer.innerHTML = '';
+
+      cart.forEach((product, index) => {
+        const cartItemElement = document.createElement('div');
+        cartItemElement.classList.add('cart-item');
+        cartItemElement.innerHTML = `
+          <span>${product.name}</span>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+
+        cartItemsContainer.appendChild(cartItemElement);
+        
+        totalAmount += 10 * 82;
+      });
+
+      totalAmountElement.textContent = totalAmount.toFixed(2);
+    }
+
+    function addToCart(productName) {
+      const existingProduct = cart.find(item => item.name === productName);
+
+      if (!existingProduct) {
+        cart.push({ name: productName });
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
+
+      updateCartCount();
+      displayCartItems();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCartItems();
+      updateCartCount();
+    }
+
+    displayCartItems();
+    updateCartCount();
+  </script>
+
+</body>
+</html>

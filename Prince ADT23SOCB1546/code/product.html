@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products - My HealthCare</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .navbar {
+      background-color: #0077b6;
+      padding: 10px;
+      color: white;
+    }
+
+    .navbar a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .product img {
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .product button {
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+  </div>
+
+  <h2>Products</h2>
+
+  <div class="product">
+    <img src="00121040_L_2_7458.jpg" alt="Digital Thermometer">
+    <h3>Digital Thermometer</h3>
+    <p>Check body temperature easily.</p>
+    <button onclick="addToCart('Digital Thermometer')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <img src="Pulse-Oximeter-600x605.jpg" alt="Pulse Oximeter">
+    <h3>Pulse Oximeter</h3>
+    <p>Measures oxygen level and pulse rate.</p>
+    <button onclick="addToCart('Pulse Oximeter')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <img src="81zKjnsKyZL._AC_SL1500_.jpg" alt="Face Mask">
+    <h3>Face Mask (Pack of 50)</h3>
+    <p>Protective 3-layer face masks.</p>
+    <button onclick="addToCart('Face Mask')">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <img src="OIP.jpg" alt="Hand Sanitizer">
+    <h3>Hand Sanitizer</h3>
+    <p>Keep your hands clean and germ-free.</p>
+    <button onclick="addToCart('Hand Sanitizer')">Add to Cart</button>
+  </div>
+
+  <footer>
+    <p></p>
+  </footer>
+
+  <script>
+    function addToCart(productName) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({name: productName});
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      document.getElementById('cartCount').textContent = cart.length;
+    }
+
+    updateCartCount();
+  </script>
+
+</body>
+</html>
