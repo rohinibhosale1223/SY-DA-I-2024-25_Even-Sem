@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Wise - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login to Weather Wise</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="pass" placeholder="Password" required>
+            <button id="show-pass">Show Password</button>
+            <button type="submit" id="submit-btn" disabled>Login</button>
+        </form>
+        <p id="login-error" class="error-message"></p>
+    </div>
+    
+    <div class="container" style="display: none;" id="weather-app">
+        <h1>Weather Wise</h1>
+        <input type="text" id="city" placeholder="Enter city name">
+        <button onclick="getWeather()">Get Weather</button>
+        <button onclick="getWeather('auto')">Use My Location</button>
+        <div id="weather-result"></div>
+    </div>
+    
+    <script>
+        var username = document.getElementById('username');
+        var pass = document.getElementById('pass');
+        var submit = document.getElementById('submit-btn');
+        var showPass = document.getElementById('show-pass');
+        var validUsername = false, validPass = false;
+
+        username.addEventListener('input', onUsernameInput);
+        pass.addEventListener('input', onPassInput);
+        showPass.addEventListener('click', togglePass);
+
+        function onUsernameInput(event) {
+            validUsername = event.target.value.length > 5;
+            username.style.borderColor = validUsername ? 'green': 'red';
+            checkValidity();
+        }
+
+        function onPassInput(event) {
+            validPass = /^(?=.[0-9])(?=.[!@#$%^&])[a-zA-Z0-9!@#$%^&]{6,16}$/.test(event.target.value);
+            pass.style.borderColor = validPass ? 'green': 'red';
+            checkValidity();
+        }
+
+        function checkValidity() {
+            submit.disabled = !(validUsername && validPass);
+        }
+
+        function togglePass(event) {
+            event.preventDefault();
+            if(pass.getAttribute('type') === 'text') {
+                pass.setAttribute('type', 'password');
+                showPass.innerHTML = 'Show Password';
+            } else {
+                pass.setAttribute('type', 'text');
+                showPass.innerHTML = 'Hide Password';
+            }
+        }
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (validUsername && validPass) {
+                document.querySelector('.login-container').style.display = 'none';
+                document.getElementById('weather-app').style.display = 'block';
+            } else {
+                document.getElementById('login-error').textContent = 'Invalid username or password!';
+            }
+        });
+    </script>
+</body>
+</html>
+<form action="/login" method="post">
+    <h2>Login Form</h2>
+    <label for="username">User Name</label>
+    <input type="text" class="box" placeholder="Enter User name" id="username" name="username">
+    <label for="pass">Password</label>
+    <input type="password" class="box" placeholder="Enter Password" id="pass" name="pass">
+    <button id="show-pass">show password</button>
+    <input type="submit" id="submit-btn" value="Login" disabled>
+    <!-- <div style="color: <%= err ? 'red' : 'green' %>"><%= msg %></div> -->
+    <div class="msg"></div>
+</form>

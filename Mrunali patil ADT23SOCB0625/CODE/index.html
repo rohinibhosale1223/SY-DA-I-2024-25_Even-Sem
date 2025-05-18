@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Appointment System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h1>CarePlus Hospital</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="hero">
+        <h2>Your Health, Our Priority</h2>
+        <p>Book an appointment with top doctors in just a few clicks.</p>
+        <button class="btn" onclick="openBookingForm()">Book Appointment</button>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service-list">
+            <div class="service">General Checkup</div>
+            <div class="service">Emergency Care</div>
+            <div class="service">Specialist Consultation</div>
+        </div>
+    </section>
+
+    <!-- Booking Form (Initially Hidden) -->
+    <div id="booking-form" class="form-popup">
+        <div class="form-container">
+            <h2>Book an Appointment</h2>
+            <form id="appointmentForm"> <!-- Added form tag -->
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" required>
+
+                <label for="doctor">Select Doctor:</label>
+                <select id="doctor">
+                    <option>Dr. John Doe (Cardiologist)</option>
+                    <option>Dr. Sarah Smith (Dermatologist)</option>
+                    <option>Dr. Adam Lee (General Physician)</option>
+                </select>
+
+                <button type="submit" class="btn">Confirm Booking</button>
+                <button type="button" class="btn close-btn" onclick="closeBookingForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h3>Appointment Confirmed ✅</h3>
+            <p>Your appointment has been successfully booked. We will contact you soon.</p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2025 CarePlus Hospital. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
