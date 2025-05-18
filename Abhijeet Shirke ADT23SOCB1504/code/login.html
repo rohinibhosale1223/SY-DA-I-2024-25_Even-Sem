@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | World Travel Fusion</title>
+    <link rel="stylesheet" href="login.css">
+     <form action="login.php" method="POST"></form>
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div class="login-container">
+        <h2>Welcome Back!</h2>
+        <p>Please sign in to continue</p>
+
+        <input type="text" id="username" placeholder="Enter your name">
+        <input type="email" id="email" placeholder="Enter your email">
+        <input type="password" id="password" placeholder="Enter your password">
+
+        <button onclick="login()">Sign In</button>
+        <p>Don't have an account? <a href="#">Sign Up</a></p>
+    </div>
+
+    <footer>
+        &copy; 2025 World Travel Fusion. All rights reserved.
+    </footer>
+
+    <script>
+        function login() {
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            if (username && email && password) {
+                localStorage.setItem("loggedIn", "true");
+                window.location.href = "index.html"; // Homepage ला redirect
+            } else {
+                alert("Please enter all details!");
+            }
+        }
+    </script>
+<script>
+    function signIn() {
+        // User successfully logged in
+        localStorage.setItem("loggedIn", "true");  
+        window.location.href = "index.html";  // Redirect to home page
+    }
+</script>
+</body>
+</html>

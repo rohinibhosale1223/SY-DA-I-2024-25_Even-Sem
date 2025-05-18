@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking Page</title>
+</head>
+<body>
+  <h1>Your Booking Cart</h1>
+
+  <div id="cartSummary"></div>
+
+  <script>
+    // Cart localStorage varun load kara
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function showCartSummary() {
+      let cartSummary = document.getElementById('cartSummary');
+      if (cart.length === 0) {
+        cartSummary.innerHTML = '<p>Your cart is empty.</p>';
+      } else {
+        let html = '<ul>';
+        cart.forEach(item => {
+          html += `<li>${item.name} - ${item.price}</li>`;
+        });
+        html += '</ul>';
+        cartSummary.innerHTML = html;
+      }
+    }
+
+    window.onload = showCartSummary;
+  </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="image\favicon.png">
+    <title>World Travel Fusion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Slider -->
+    <div id="bgSlider"></div>
+    
+ <!-- Login Popup -->
+<div class="login-popup" id="loginPopup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <img src="image/favicon.png" alt="Website Logo" width="100class="popup-logo">
+
+        <h2>Login or Sign Up</h2>
+
+        <!-- Mobile Number Input -->
+        <div id="mobileStep">
+            <div class="mobile-input">
+                <span class="country-code">+91</span>
+                <input type="tel" id="mobileNumber" class="input-box" placeholder="Enter Mobile Number" maxlength="10" required>
+            </div>
+            <button onclick="sendOTP()">Continue</button>
+        </div>
+
+        <!-- OTP Input -->
+        <div id="otpStep" style="display: none;">
+            <input type="text" id="otpCode" placeholder="Enter OTP" required>
+            <button onclick="verifyOTP()">Verify & Continue</button>
+        </div>
+
+        <p>OR</p>
+
+        <!-- Google Login -->
+        <button class="google-login">Login with Google</button>
+
+        <p>By continuing, you agree to our <a href="#">Terms of Service</a> & <a href="#">Privacy Policy</a></p>
+
+        <p class="copyright">© 2025 Journey Fusion Management. All Rights Reserved.</p>
+    </div>
+</div>
+
+   <!-- Navbar -->
+<div class="navbar">
+    <div class="logo-container">
+        <img src="image/favicon.png" alt="Logo" class="logo-icon"> 
+        <img src="image/letter.png" alt="Make My World" class="brand-image">
+    </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about us.html">About</a></li>
+            <li><a href="package.html">Packages</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            
+        </ul>
+    </div>
+   
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Explore the World Like Never Before</h1>
+    <p>Find the best global travel destinations and experience amazing adventures.</p>
+    <button class="btn">Discover More</button>
+</section>
+
+<!-- Discover More Section (New) -->
+<section id="discover-section">
+    <h2>Want to Explore More?</h2>
+    <button id="discoverMoreBtn" class="discover-more-btn">Discover More</button>
+</section>
+    
+
+
+
+
+    <!-- Top Destinations Section -->
+    <section class="top-destinations">
+        <h2>Top Destinations</h2>
+        <div class="destination-container">
+            <!-- Tokyo -->
+            <div class="destination-card">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.nuLWguKr9d9k0NsdoMT5SAHaEK&pid=Api&P=0&h=180"
+                alt="Tokyo">
+                <h3>Tokyo</h3>
+                <p>Immerse yourself in Japanese culture and technology.</p>
+            </div>
+
+            <!-- New York -->
+            <div class="destination-card">
+                <img src="https://pixelz.cc/wp-content/uploads/2018/12/new-york-cityscape-uhd-4k-wallpaper.jpg"
+                alt="New York">
+                <h3>New York</h3>
+                <p>Experience the city of skyscrapers and Broadway.</p>
+            </div>
+
+            <!-- Dubai -->
+            <div class="destination-card">
+                <img src="https://tse1.mm.bing.net/th?id=OIP.hugJJax7Q91izNBbx-XyVQHaEo&pid=Api&P=0&h=180" alt="Dubai">
+                <h3>Dubai</h3>
+                <p>Explore the luxury, desert safaris, and iconic skyline.</p>
+            </div>
+
+            <!-- London -->
+            <div class="destination-card">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.niCGYDV9Nyx81C3PIl_LlwHaE7&pid=Api&P=0&h=180" alt="London">
+                <h3>London</h3>
+                <p>Discover British history, Big Ben, and royal palaces.</p>
+            </div>
+        </div>
+    </section>
+    <section class="group-tours">
+        <h2>GROUP TOURS</h2>
+        <div class="tour-container">
+            <div class="tour-category">
+                <h3>INTERNATIONAL GROUP TOURS</h3>
+                <ul>
+                    <li>Africa</li>
+                    <li>America</li>
+                    <li>New Zealand</li>
+                    <li>Bhutan</li>
+                    <li>Dubai</li>
+                    <li>Europe</li>
+                    <li>Tokyo</li>
+                    <li>London</li>
+                    <li>Sri Lanka Maldives</li>
+                </ul>
+            </div>
+            <div class="tour-category">
+                <h3>INDIAN GROUP TOURS</h3>
+                <ul>
+                    <li>Andaman</li>
+                    <li>Andhra Pradesh</li>
+                    <li>Chardham</li>
+                    <li>Chhattisgarh</li>
+                    <li>Goa</li>
+                    <li>Gujarat</li>
+                    <li>Himachal</li>
+                    <li>Kailash Manasarovar</li>
+                    <li>Karnataka</li>
+                    <li>Kashmir</li>
+                    <li>Kerala</li>
+                    <li>Lakshadweep</li>
+                    <li>Madhya Pradesh</li>
+                    <li>Maharashtra</li>
+                    <li>Nainital</li>
+                    <li>North East</li>
+                    <li>Orissa</li>
+                    <li>Punjab</li>
+                    <li>Rajasthan</li>
+                    <li>Sikkim Darjeeling</li>
+                    <li>Tamil Nadu</li>
+                    <li>Uttar Pradesh</li>
+                    <li>West Bengal</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Speciality Tours Section -->
+<section id="speciality-tours">
+    <h2> Speciality Tours</h2>
+    <p>Something for every traveller - Journey’s curated just for You!</p>
+
+    <div class="tour-container">
+        <div class="tour-card">
+            <img src="image/honeymoon.jpg" alt="Honeymoon">
+            <p>Honeymoon Special</p>
+        </div>
+
+        <div class="tour-card">
+            <img src="image/chota break.jpg" alt="Chota Break">
+            <p>Chota Break</p>
+        </div>
+
+        <div class="tour-card">
+            <img src="image/veg tour.jpg" alt="Veg Tour">
+            <p>Veg Tour</p>
+        </div>
+
+        <div class="tour-card">
+            <img src="image/marigold.jpg" alt="Marigold">
+            <p>Marigold</p>
+        </div>
+
+        <div class="tour-card">
+            <img src="image/super economy .jpg" alt="Super Economy">
+            <p>Super Economy</p>
+            </div>
+
+            <div class="tour-card">
+                <img src="image/adventure .jpg" alt="Adventure">
+                <p>Adventure</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section (Below Top Destinations) -->
+<section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+        <h3>Q: What are the best destinations to visit?</h3>
+        <p>A: Some of the top destinations include Paris, New York, Tokyo, and more.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Q: How can I book a package?</h3>
+        <p>A: You can book through our website by selecting your preferred package.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Q: Can I customize my travel package?</h3>
+        <p>A: Yes, you can customize your travel package by selecting your preferences for flights, hotels, and activities.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Q: What payment methods do you accept?</h3>
+        <p>A: We accept credit/debit cards, net banking, UPI, and digital wallets.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Q: Is travel insurance included in my package?</h3>
+        <p>A: Travel insurance is optional, but we highly recommend adding it during the booking process.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Q: How can I contact customer support?</h3>
+        <p>A: You can contact us via our helpline number, email, or live chat support available on our website.</p>
+    </div>
+</section>
+
+<!-- Social Media Section (Below FAQ) -->
+<section id="social-media">
+    <h2>Follow Us</h2>
+    <a href="https://instagram.com" target="_blank"><img src="image\insta.jpg.svg" alt="Instagram"></a>
+    <a href="https://twitter.com" target="_blank"><img src="image\twitter.svg" alt="Twitter"></a>
+    <a href="https://facebook.com" target="_blank"><img src="image\face.svg" alt="Facebook"></a>
+    <a href="https://whatsapp.com" target="_blank"><img src="image\whatsapp.svg" alt="whatsapp"></a>
+</section>
+
+    
+    <script src="ASSETS/JS/main.js"></script>
+</body>
+</html>

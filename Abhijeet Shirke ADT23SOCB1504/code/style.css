@@ -1,0 +1,712 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: transparent;
+    color: #0f0101;
+}
+
+/* Navbar सुधारणा */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:transparent;
+    padding: 15px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: none;
+    box-shadow: none;
+    border:none;
+    
+}
+.navbar a {
+    background: linear-gradient(90deg, #ff8008, #ffc837);
+    color: #fff;
+    border-radius: 30px; /* Rounded edges */
+    text-decoration: none; /* No underline */
+    font-weight: bold;
+    transition:  0.3s ease-in-out; 
+    padding: 12px 30px;
+    font-size: 18px; 
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.navbar a:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* लोगो आणि टेक्स्ट एका रेषेत आणि व्यवस्थित */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Logo icon */
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    filter: invert(1);
+}
+
+/* Brand image (letter.png) */
+.brand-image {
+    width: 100px;
+    height: 50px;
+}
+
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #e4e4e2;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background-size: 400% 400%;
+    animation: gradientBG 8s infinite alternate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 50px;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff8008, #ffc837);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    border-radius: 30px;
+    color: #fff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Top Destinations */
+.top-destinations {
+    text-align: center;
+    margin-top: 100px;
+    padding: 60px;
+    background: white;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.top-destinations h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+}
+
+.destination-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.destination-card {
+    background: white;
+    width: 270px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.destination-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.destination-card:hover img {
+    transform: scale(1.05);
+}
+
+.destination-card h3 {
+    font-size: 22px;
+    margin: 15px 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.destination-card p {
+    font-size: 16px;
+    padding: 0 15px 20px;
+    color: gray;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Popup Background */
+.login-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+}
+
+/* Popup Box */
+.popup-content {
+    animation: bgAnimation 8s infinite linear; /* 8 seconds loop */
+    transition: background 1s ease-in-out;
+    width: 400px;
+    padding: 20px;
+    background: #1e3c72;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+/* Gradient Border */
+.popup-content::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(45deg, #007bff, #ff00ff);
+    border-radius: 15px;
+    z-index: -1;
+}
+/* Left Side Content */
+.popup-main {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Logo */
+.popup-logo {
+    width: 110px;
+    margin: 0 auto 15px;
+}
+
+/* Mobile Input Section */
+.mobile-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.country-code {
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+}
+
+.input-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Continue Button */
+.popup-content button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.popup-content button:hover {
+    background: linear-gradient(45deg, #005ecb, #0096d6);
+}
+
+/* Google Login */
+.google-login {
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 8px;
+}
+
+.google-login:hover {
+    background: #f4f4f4;
+}
+
+/* Slide-In Animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes bgAnimation {
+    0% { background: #1e3c72; }
+    25% { background: #2a5298; }
+    50% { background: #00c6ff; }
+    75% { background: #0072ff; }
+    100% { background: #1e3c72; }
+}
+/* FAQ Section Styling */
+#faq {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 30px 0;
+}
+
+/* Heading */
+#faq h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* FAQ Hover Effect */
+.faq-item:hover {
+    transform: scale(1.02);
+}
+
+/* Question Styling */
+.faq-item h3 {
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 10px 0;
+    position: relative;
+    font-weight: bold;
+}
+
+/* Answer Styling */
+.faq-item p {
+    font-size: 1rem;
+    margin: 10px 0 0;
+    line-height: 1.6;
+    display: none;  /* Initially Hidden */
+}
+
+/* Expand/Collapse Animation */
+.faq-item.active p {
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #faq {
+        padding: 40px 5%;
+    }
+    #faq h2 {
+        font-size: 2rem;
+    }
+    .faq-item h3 {
+        font-size: 1.2rem;
+    }
+    .faq-item p {
+        font-size: 0.95rem;
+    }
+}
+/* Social Media Section */
+#social-media {
+    text-align: center;
+    padding: 40px 0;
+    background: rgba(0, 123, 255, 0.1); /* Light Blue Blur */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    width: 60%; /* Center Width */
+}
+
+/* Follow Us Heading */
+#social-media h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Social Media Icons - Horizontal Alignment */
+.social-icons {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    gap: 20px; /* Space between icons */
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+/* Social Media Icons */
+#social-media a {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#social-media img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    padding: 5px;
+    background: white;
+    transition: all 0.3s ease-in-out;
+}
+
+#social-media a:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #social-media {
+        width: 80%;
+    }
+    #social-media h2 {
+        font-size: 2rem;
+    }
+    .social-icons {
+        gap: 15px;
+    }
+    #social-media img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+
+
+
+#bgSlider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    animation: bgChange 15s infinite alternate;
+    z-index: -10;
+}
+
+@keyframes bgChange {
+        0% { background-image: url('image/image1.jpg'); }
+        10% { background-image: url('image/image2.jpg'); }
+        20% { background-image: url('image/image3.jpg');}
+        30% { background-image: url('image/image4.jpg'); }
+        40% { background-image: url('image/image5.jpg'); }
+        50% { background-image: url('image/image6.jpg'); }
+        60% { background-image: url('image/image7.jpg'); }
+        70% { background-image: url('image/image8.jpg'); }
+        80% { background-image: url('image/image9.jpg');}
+        90% { background-image: url('image/image10.jpg');}
+    }
+    
+/* Speciality Tours Section */
+#speciality-tours {
+    text-align: center;
+    padding: 50px 0;
+    background: rgba(0, 0, 255, 0.05); /* Light Blue Transparent Background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    margin: 40px auto;
+    width: 90%;
+}
+
+#speciality-tours h2 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+#speciality-tours p {
+    font-size: 1.4rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Tour Cards */
+.tour-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tour-card {
+    position: relative;
+    width: 250px;
+    height: 280px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.tour-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.tour-card p {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0 0 15px 15px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add '...' if text is too long */
+    max-width: 100%; /* Ensure it fits inside the card */
+}
+
+/* Hover Effects */
+.tour-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.tour-card:hover img {
+    transform: scale(1.1);
+}
+.group-tours {
+    text-align: center;
+    padding: 80px 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('your-background-image.jpg') center/cover no-repeat;
+    color: white;
+}
+
+.group-tours h2 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tour-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    gap: 50px;
+}
+
+.tour-category {
+    flex: 1;
+    min-width: 350px;
+    text-align: left;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+.tour-category:hover {
+    transform: translateY(-10px);
+}
+
+.tour-category h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tour-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tour-list span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    color: white;
+    overflow: hidden;
+}
+
+/* Animation Effect on Hover */
+.tour-list span::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.tour-list span:hover::before {
+    left: 0;
+}
+
+.tour-list span:hover {
+    background: rgba(255, 255, 255, 0.5);
+    color: black;
+    transform: scale(1.1);
+}
