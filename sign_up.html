@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-purple-100 to-pink-100 flex justify-center items-center min-h-screen p-4">
+    <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md transition-transform hover:scale-105">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Create an Account</h1>
+        <form id="signup-form" class="space-y-4">
+            <div>
+                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your full name" required>
+                <div id="name-error" class="text-red-500 text-xs italic" style="display: none;"></div>
+            </div>
+            <div>
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your email address" required>
+                <div id="email-error" class="text-red-500 text-xs italic" style="display: none;"></div>
+            </div>
+            <div>
+                <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                <input type="text" id="username" name="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Choose a username" required>
+                <div id="username-error" class="text-red-500 text-xs italic" style="display: none;"></div>
+            </div>
+            <div>
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <div class="relative">
+                    <input type="password" id="password" name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Create a password" required>
+                    <button type="button" id="toggle-password" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-1.414L9.342 3.57a8.022 8.022 0 0111.316 0l7.308 7.308a1.012 1.012 0 010 1.414l-7.308 7.308a8.022 8.022 0 01-11.316 0l-7.308-7.308z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="password-error" class="text-red-500 text-xs italic" style="display: none;"></div>
+            </div>
+            <div>
+                <label for="confirm-password" class="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
+                <div class="relative">
+                    <input type="password" id="confirm-password" name="confirm-password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Confirm your password" required>
+                    <button type="button" id="toggle-confirm-password" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <svg id="confirm-eye-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-1.414L9.342 3.57a8.022 8.022 0 0111.316 0l7.308 7.308a1.012 1.012 0 010 1.414l-7.308 7.308a8.022 8.022 0 01-11.316 0l-7.308-7.308z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="confirm-password-error" class="text-red-500 text-xs italic" style="display: none;"></div>
+            </div>
+            <button type="submit" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-full transition duration-300 ease-in-out">
+                Sign Up
+            </button>
+        </form>
+        <div class="mt-6 text-center text-gray-600">
+            Already have an account? <a href="login.html" class="text-blue-500 hover:text-blue-700 font-semibold">Log in</a>
+        </div>
+    </div>
+    <script>
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const usernameError = document.getElementById('username-error');
+        const passwordError = document.getElementById('password-error');
+        const confirmPasswordError = document.getElementById('confirm-password-error');
+        const signUpForm = document.getElementById('signup-form');
+        const togglePasswordButton = document.getElementById('toggle-password');
+        const eyeIcon = document.getElementById('eye-icon');
+        let passwordVisible = false;
+        const toggleConfirmPasswordButton = document.getElementById('toggle-confirm-password');
+        const confirmEyeIcon = document.getElementById('confirm-eye-icon');
+        let confirmPasswordVisible = false;
+
+        togglePasswordButton.addEventListener('click', function() {
+            passwordVisible = !passwordVisible;
+            passwordInput.type = passwordVisible ? 'text' : 'password';
+             // Update the eye icon based on password visibility
+            if (passwordVisible) {
+                eyeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-1.414L9.342 3.57a8.022 8.022 0 0111.316 0l7.308 7.308a1.012 1.012 0 010 1.414l-7.308 7.308a8.022 8.022 0 01-11.316 0l-7.308-7.308z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />`; // Eye icon
+            } else {
+                eyeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A8.488 8.488 0 007.5 6v6.36m-0.005-6.434V9.75A2.69 2.69 0 014.858 12h1.951m-1.951 0c.961 0 1.84.687 2.168 1.688A18.715 18.715 0 0012 13.5h3.001m-3.001 0a6.4 6.4 0 01-2.032-1.085m-2.032 1.085a6.4 6.4 0 00-2.032 1.085m0-9.292a1.35 1.35 0 00-1.35-1.35H7.17a1.35 1.35 0 00-1.35 1.35m0-3.174a1.35 1.35 0 011.35-1.35h.825m0 0H10.63a1.35 1.35 0 011.35 1.35v3.175m0 0v.925m0 0a48 48 0 00-5.064 0" />`; // Eye off icon
+            }
+        });
+
+        toggleConfirmPasswordButton.addEventListener('click', function() {
+            confirmPasswordVisible = !confirmPasswordVisible;
+            confirmPasswordInput.type = confirmPasswordVisible ? 'text' : 'password';
+             // Update the eye icon based on password visibility
+            if (confirmPasswordVisible) {
+                confirmEyeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-1.414L9.342 3.57a8.022 8.022 0 0111.316 0l7.308 7.308a1.012 1.012 0 010 1.414l-7.308 7.308a8.022 8.022 0 01-11.316 0l-7.308-7.308z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />`; // Eye icon
+            } else {
+                confirmEyeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A8.488 8.488 0 007.5 6v6.36m-0.005-6.434V9.75A2.69 2.69 0 014.858 12h1.951m-1.951 0c.961 0 1.84.687 2.168 1.688A18.715 18.715 0 0012 13.5h3.001m-3.001 0a6.4 6.4 0 01-2.032-1.085m-2.032 1.085a6.4 6.4 0 00-2.032 1.085m0-9.292a1.35 1.35 0 00-1.35-1.35H7.17a1.35 1.35 0 00-1.35 1.35m0-3.174a1.35 1.35 0 011.35-1.35h.825m0 0H10.63a1.35 1.35 0 011.35 1.35v3.175m0 0v.925m0 0a48 48 0 00-5.064 0" />`; // Eye off icon
+            }
+        });
+
+        signUpForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            let hasErrors = false;
+            if (!nameInput.value.trim()) {
+                nameError.textContent = 'Name is required';
+                nameError.style.display = 'block';
+                hasErrors = true;
+            } else {
+                nameError.style.display = 'none';
+            }
+            if (!emailInput.value.trim()) {
+                emailError.textContent = 'Email is required';
+                emailError.style.display = 'block';
+                hasErrors = true;
+            } else {
+                emailError.style.display = 'none';
+            }
+            if (!usernameInput.value.trim()) {
+                usernameError.textContent = 'Username is required';
+                usernameError.style.display = 'block';
+                hasErrors = true;
+            } else {
+                usernameError.style.display = 'none';
+            }
+            if (!passwordInput.value.trim()) {
+                passwordError.textContent = 'Password is required';
+                passwordError.style.display = 'block';
+                hasErrors = true;
+            } else {
+                passwordError.style.display = 'none';
+            }
+            if (!confirmPasswordInput.value.trim()) {
+                confirmPasswordError.textContent = 'Confirm Password is required';
+                confirmPasswordError.style.display = 'block';
+                hasErrors = true;
+            } else if (confirmPasswordInput.value !== passwordInput.value) {
+                confirmPasswordError.textContent = 'Passwords do not match';
+                confirmPasswordError.style.display = 'block';
+                hasErrors = true;
+            } else {
+                confirmPasswordError.style.display = 'none';
+            }
+            if (!hasErrors) {
+                // Simulate a successful sign up (replace with your actual authentication logic)
+                console.log('Signing up with:', nameInput.value, emailInput.value, usernameInput.value, passwordInput.value);
+                alert('Sign up successful! (This is a demo)');
+                // Store the user data in localStorage.  Use a key that makes sense, like "user-data".
+                const userData = {
+                    name: nameInput.value,
+                    email: emailInput.value,
+                    username: usernameInput.value,
+                    password: passwordInput.value, // In a real app, NEVER store the password directly!
+                };
+                localStorage.setItem('user-data', JSON.stringify(userData));
+                // Redirect to a profile page.  In a real application, this would be a server-side route.
+                window.location.href = 'profile.html'; //  Create a new file named "profile.html"
+            }
+        });
+    </script>
+</body>
+</html>
+
+<!-- Compare this snippet from index.html: -->
+<!-- <footer>   
+ -->

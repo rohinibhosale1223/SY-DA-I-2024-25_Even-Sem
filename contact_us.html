@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Read Articles</title>
+    <style>
+        body {font-family: sans-serif; margin: 0; padding: 0; line-height: 1.6;}
+        header {background-color: #4d16ce; color: white; padding: 1rem 0; text-align: center;}
+        nav {background-color: #444; color: white; padding: 0.5rem 0; text-align: center;}
+        nav a {color: white; text-decoration: none; padding: 0 1rem;}
+        nav a:hover {text-decoration: underline;}
+        main {padding: 2rem;}
+        footer {background-color: #333; color: white; text-align: center; padding: 1rem 0; position:relative; bottom: 0; width: 100%;}
+        .contact-section {max-width: 600px; margin: 0 auto;}
+        .contact-section p {margin-bottom: 1rem;}
+        .contact-section a {color: #007bff; text-decoration: none;}
+        .contact-section a:hover {text-decoration: underline;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Read Articles</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact_us.html">Contact</a>
+        <a href="article.html">Articles</a>
+        <a href="product.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+        <a href="logout.html">Logout</a>
+    </nav>
+    <main>
+        <section class="contact-section">
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you! If you have any questions, feedback, or suggestions, please don't hesitate to reach out.</p>
+            <p>You can contact us via email at: <a href="mailto:aakashpatil094@gmail.com">aakashpatil094@gmail.com</a></p>
+            <p>Or you can fill out this form:</p>
+            <form action="mailto:aakashpatil094@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email"><br><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+                <input type="submit" value="Send">
+                <input type="reset" value="Reset">
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Read Articles. All rights reserved.</p>
+    </footer>
+</body>
+</html>

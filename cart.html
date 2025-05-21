@@ -1,31 +1,228 @@
-C. Weather Favorites / Cart Page
-<!-- favorites.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Locations - Weather Wise</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Read Articles</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #7516cd;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .total-price {
+            text-align: right;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .remove-button {
+            background-color: red;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Weather Wise</h1>
+    <header>
+        <h1>Shopping Cart</h1>
+    </header>
     <nav>
-      <a href="home.html">Home</a>
-      <a href="forecast.html">Forecast</a>
-      <a href="favorites.html">My Locations</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="product.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+        <a href="logout.html">Logout</a>
+        
     </nav>
-  </header>
-  <main>
-    <h2>Saved Locations</h2>
-    <div class="favorites-list">
-      <!-- List of favorite cities -->
-      <div class="location">Pune <button>Remove</button></div>
-      <div class="location">Mumbai <button>Remove</button></div>
-    </div>
-  </main>
-  <footer>
-    <p>&copy; 2025 Weather Wise</p>
-  </footer>
+    <main>
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="total-price">Total:</td>
+                    <td id="cart-total">Rs. 0</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <button id="checkout-button">Checkout</button>
+        <div id="dynamic-content"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Read Articles. All rights reserved.</p>
+    </footer>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+        const cartTableBody = document.querySelector('#cart-table tbody');
+        const cartTotal = document.querySelector('#cart-total');
+
+        function updateCartDisplay() {
+            cartTableBody.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                const itemTotal = parseInt(item.price);
+
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>Rs. ${item.price}</td>
+                    <td>1</td>
+                    <td>Rs. ${itemTotal}</td>
+                    <td><button class="remove-button" data-id="${item.id}">Remove</button></td>
+                `;
+
+                cartTableBody.appendChild(row);
+                total += itemTotal;
+            });
+
+            cartTotal.textContent = `Rs. ${total}`;
+
+            document.querySelectorAll('.remove-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.dataset.id;
+                    cart = cart.filter(item => item.id !== productId);
+                    localStorage.setItem('shoppingCart', JSON.stringify(cart));
+                    updateCartDisplay();
+                });
+            });
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        }
+
+        updateCartDisplay();
+
+        document.querySelector('#checkout-button').addEventListener('click', function() {
+            alert('Checkout functionality will be implemented here.');
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dynamicContent = document.getElementById('dynamic-content');
+            const heading = document.createElement('h2');
+            heading.textContent = 'Dynamic Content from JavaScript!';
+            dynamicContent.appendChild(heading);
+            const paragraph = document.createElement('p');
+            paragraph.textContent = 'This paragraph was generated using JavaScript.';
+            dynamicContent.appendChild(paragraph);
+            const image = document.createElement('img');
+            image.src = 'article.img';
+            image.alt = 'Dynamic Article Image';
+            dynamicContent.appendChild(image);
+            const list = document.createElement('ul');
+            dynamicContent.appendChild(list);
+            const addButton = document.createElement('button');
+            addButton.textContent = 'Add Product';
+            addButton.id = 'add-product';
+            dynamicContent.appendChild(addButton);
+            const cartItems = document.createElement('ul');
+            cartItems.id = 'cart-items';
+            dynamicContent.appendChild(cartItems);
+
+            const storedCart = localStorage.getItem('shoppingCart');
+            if (storedCart) {
+                try {
+                    cart = JSON.parse(storedCart);
+                } catch (e) {
+                    console.error("Error parsing cart data from storage", e);
+                    cart = [];
+                    localStorage.removeItem('shoppingCart');
+                }
+            }
+
+            addButton.addEventListener('click', function() {
+                const productName = prompt('Enter product name:');
+                if (productName) {
+                    addProductToCart(productName);
+                }
+            });
+
+            function addProductToCart(productName) {
+                const newProduct = {
+                    id: Date.now(),
+                    name: productName,
+                    price: Math.floor(Math.random() * 100) + 10,
+                };
+
+                cart.push(newProduct);
+                updateCartDisplay();
+
+                const listItem = document.createElement('li');
+                listItem.textContent = productName;
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.addEventListener('click', function() {
+                    const indexToRemove = cart.findIndex(item => item.id === newProduct.id);
+                    if (indexToRemove !== -1) {
+                        cart.splice(indexToRemove, 1);
+                        updateCartDisplay();
+                        cartItems.removeChild(listItem);
+                    }
+                });
+
+                listItem.appendChild(removeButton);
+                cartItems.appendChild(listItem);
+                localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            }
+        });
+    </script>
 </body>
 </html>

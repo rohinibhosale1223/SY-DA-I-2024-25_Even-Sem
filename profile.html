@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-green-100 to-yellow-100 flex justify-center items-center min-h-screen p-4">
+    <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Your Profile</h1>
+        <div id="profile-data" class="space-y-4">
+            <p><span class="font-semibold text-gray-700">Name:</span> <span id="profile-name" class="text-gray-600"></span></p>
+            <p><span class="font-semibold text-gray-700">Email:</span> <span id="profile-email" class="text-gray-600"></span></p>
+            <p><span class="font-semibold text-gray-700">Username:</span> <span id="profile-username" class="text-gray-600"></span></p>
+        </div>
+        <div class="mt-6 text-center">
+            <a href="logout.html" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out">
+                Log Out
+            </a>
+        </div>
+    </div>
+    <script>
+        // Get the user data from localStorage
+        const userData = JSON.parse(localStorage.getItem('user-data'));
+
+        // Populate the profile page with the user data
+        if (userData) {
+            document.getElementById('profile-name').textContent = userData.name;
+            document.getElementById('profile-email').textContent = userData.email;
+            document.getElementById('profile-username').textContent = userData.username;
+            //  Never display the password
+            // document.getElementById('profile-password').textContent = userData.password;
+        } else {
+            // If there's no user data, redirect to the login page
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
+<!-- </body>    
+ -->

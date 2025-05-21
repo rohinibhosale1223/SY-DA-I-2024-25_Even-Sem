@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Read Articles</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #1414e6;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #1127cc;
+            color: white;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            width: 300px;
+            text-align: center;
+        }
+        .cart-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #040216;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Read Articles - Products</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact_us.html">Contact</a>
+        <a href="article.html">Articles</a>
+        <a href="product.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+        <a href="sign_up.html">Sign Up</a>
+    </nav>
+    <button class="cart-button">View Cart</button>
+    <main>
+        <div class="product" data-id="1" data-name="The Art of Writing" data-price="150">
+            <h3>The Art of Writing</h3>
+            <p>Explore the nuances of effective writing and learn to captivate your audience.</p>
+            <p>Price: Rs. 150</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-id="2" data-name="Digital Marketing Basics" data-price="200">
+            <h3>Digital Marketing Basics</h3>
+            <p>Understand the fundamentals of digital marketing and grow your online presence.</p>
+            <p>Price: Rs. 200</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-id="3" data-name="Introduction to Python" data-price="100">
+            <h3>Introduction to Python</h3>
+            <p>Get started with Python programming and learn to build simple applications.</p>
+            <p>Price: Rs. 100</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-id="4" data-name="Effective Time Management" data-price="180">
+            <h3>Effective Time Management</h3>
+            <p>Learn strategies to manage your time efficiently and boost your productivity.</p>
+            <p>Price: Rs. 180</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-id="5" data-name="The Power of Communication" data-price="120">
+            <h3>The Power of Communication</h3>
+            <p>Master the art of effective communication and build strong relationships.</p>
+            <p>Price: Rs. 120</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-id="6" data-name="Web Design Principles" data-price="190">
+            <h3>Web Design Principles</h3>
+            <p>Learn the fundamental principles of web design and create user-friendly websites.</p>
+            <p>Price: Rs. 190</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Read Articles. All rights reserved.</p>
+    </footer>
+    <script>
+        // Initialize cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+        // Function to update the cart button text
+        function updateCartButton() {
+            document.querySelector('.cart-button').textContent = `View Cart (${cart.length})`;
+        }
+
+        // Call it initially
+        updateCartButton();
+
+        // Event listener for "Add to Cart" buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productDiv = this.parentElement;
+                const product = {
+                    id: productDiv.dataset.id,
+                    name: productDiv.dataset.name,
+                    price: productDiv.dataset.price
+                };
+                // Add the product to the cart array
+                cart.push(product);
+                // Save the updated cart to localStorage
+                localStorage.setItem('shoppingCart', JSON.stringify(cart));
+                // Update the cart button
+                updateCartButton();
+                alert(`${product.name} has been added to your cart!`); // Provide user feedback
+            });
+        });
+
+        // Event listener for the "View Cart" button
+        document.querySelector('.cart-button').addEventListener('click', function() {
+            window.location.href = 'cart.html';
+        });
+    </script>
+</body>
+</html>
