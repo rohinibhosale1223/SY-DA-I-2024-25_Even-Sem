@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife Gym - Memberships</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">FitLife Gym</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Memberships</a></li>
+                <li>
+                    <a href="cart.html">Cart <span id="cart-count"></span></a>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="products">
+        <h2>Our Memberships & Services</h2>
+        <div class="filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="membership">Memberships</button>
+            <button class="filter-btn" data-category="training">Training</button>
+            <button class="filter-btn" data-category="merchandise">Merchandise</button>
+        </div>
+        
+        <div class="product-grid">
+            <div class="product-card" data-id="1" data-category="membership">
+                <h3>Basic Membership</h3>
+                <p class="price">₹7000/month</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card" data-id="2" data-category="membership">
+                <h3>Premium Membership</h3>
+                <p class="price">₹14999/month</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card" data-id="3" data-category="training">
+                <h3>Personal Training (1 Session)</h3>
+                <p class="price">₹8000</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card" data-id="4" data-category="merchandise">
+                <h3>Protein Shake</h3>
+                <p class="price">₹3000</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product-card" data-id="4" data-category="merchandise">
+                <h3>Hand Gripper</h3>
+                <p class="price">₹1500</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FitLife Gym. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
