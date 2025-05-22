@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfume Shop - Cart</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Perfume Shop</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main class="cart-container">
+    <h2>Your Cart</h2>
+    <button id="clear-cart-btn" onclick="clearCart()" style="float: right; margin-bottom: 15px; background:#823a35; padding: 8px 16px; border-radius: 25px; color: #fdf7f5; border:none; cursor:pointer; box-shadow: 0 4px 8px rgba(163,81,69,0.6);">
+      Clear Cart
+    </button>
+    
+    <div id="cart-items"></div>
+
+    <div id="cart-total"></div>
+
+    <div style="text-align: right; margin-top: 20px;">
+      <button id="checkout-btn" onclick="checkout()" style="background:#a35145; padding: 12px 28px; border-radius: 30px; color: #fdf7f5; font-weight: 700; border:none; cursor:pointer; box-shadow: 0 6px 12px rgba(163,81,69,0.7);">
+        Checkout
+      </button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Perfume Shop</p>
+  </footer>
+
+  <script>
+    // Checkout function placeholder
+    function checkout() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || {};
+      if (Object.keys(cart).length === 0) {
+        alert("Your cart is empty. Please add items before checking out.");
+        return;
+      }
+      alert("Thank you for your purchase! (This is a demo alert.)");
+      clearCart();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfume Shop - Products</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Perfume Shop</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>All Perfumes</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="img/perfume1.jpg" alt="Rose Elegance" />
+        <h3>Rose Elegance</h3>
+        <p>Sweet floral scent with rose and jasmine notes.</p>
+        <p class="price">$49.99</p>
+        <button onclick="addToCart('Rose Elegance', 49.99)">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="img/perfume2.jpg" alt="Ocean Breeze" />
+        <h3>Ocean Breeze</h3>
+        <p>Fresh and light scent inspired by sea air.</p>
+        <p class="price">$59.99</p>
+        <button onclick="addToCart('Ocean Breeze', 59.99)">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="img/perfume3.jpg" alt="Night Charm" />
+        <h3>Night Charm</h3>
+        <p>Deep, mysterious scent with oud notes.</p>
+        <p class="price">$69.99</p>
+        <button onclick="addToCart('Night Charm', 69.99)">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="img/perfume4.jpg" alt="Amber Gold" />
+        <h3>Amber Gold</h3>
+        <p>Warm and spicy fragrance with amber and vanilla.</p>
+        <p class="price">$74.99</p>
+        <button onclick="addToCart('Amber Gold', 74.99)">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="img/perfume5.jpg" alt="Citrus Spark" />
+        <h3>Citrus Spark</h3>
+        <p>Refreshing citrus scent, perfect for daytime wear.</p>
+        <p class="price">$44.99</p>
+        <button onclick="addToCart('Citrus Spark', 44.99)">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="img/perfume6.jpg" alt="Mystic Oud" />
+        <h3>Mystic Oud</h3>
+        <p>Luxurious, deep oud-based fragrance.</p>
+        <p class="price">$89.99</p>
+        <button onclick="addToCart('Mystic Oud', 89.99)">Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Perfume Shop</p>
+  </footer>
+</body>
+</html>
