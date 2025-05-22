@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Services - Available Slots</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #343a40;
+            padding: 15px 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #495057;
+            transform: translateY(-2px);
+        }
+        .parking-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .parking-slot {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .parking-slot:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .slot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .slot-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .available {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .booked {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745;
+            margin: 10px 0;
+        }
+        .features {
+            text-align: left;
+            margin: 15px 0;
+        }
+        .features li {
+            margin-bottom: 5px;
+        }
+        .btn-book {
+            width: 100%;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .cart-count {
+            background-color: #dc3545;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        .search-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .filter-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 5px 15px;
+            border-radius: 20px;
+            background: #e9ecef;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div>
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About Us</a>
+                <a href="register.html">Login/Register</a>
+            </div>
+            <div>
+                <a href="cart.html">Cart (<span class="cart-count">0</span>)</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="search-container">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search parking slots..." id="search-input">
+            <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
+        </div>
+        <div class="filter-options">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="indoor">Indoor</button>
+            <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+            <button class="filter-btn" data-filter="handicap">Handicap Accessible</button>
+            <button class="filter-btn" data-filter="ev">EV Charging</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center my-4">Available Parking Slots</h1>
+        <div class="parking-container" id="parking-container">
+            <!-- Slots will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Parking slots data
+        const parkingSlots = [
+            {
+                id: 'A1',
+                name: 'Slot A1',
+                price: 10,
+                type: 'indoor',
+                features: ['Covered', '24/7 Access', 'Security Cameras'],
+                status: 'available'
+            },
+            {
+                id: 'B2',
+                name: 'Slot B2',
+                price: 12,
+                type: 'outdoor',
+                features: ['Easy Access', 'Well-lit', 'Near Elevator'],
+                status: 'available'
+            },
+            {
+                id: 'C3',
+                name: 'Slot C3',
+                price: 15,
+                type: 'indoor',
+                features: ['Covered', 'EV Charging', 'Extra Wide'],
+                status: 'available'
+            },
+            {
+                id: 'D4',
+                name: 'Slot D4',
+                price: 8,
+                type: 'outdoor',
+                features: ['Economy', 'Basic', 'Standard Size'],
+                status: 'available'
+            },
+            {
+                id: 'E5',
+                name: 'Slot E5',
+                price: 20,
+                type: 'handicap',
+                features: ['Extra Wide', 'Ramp Access', 'Priority Location'],
+                status: 'available'
+            },
+            {
+                id: 'F6',
+                name: 'Slot F6',
+                price: 18,
+                type: 'ev',
+                features: ['EV Charging', 'Covered', 'Premium'],
+                status: 'available'
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('parkingCart')) || [];
+        const cartCount = document.querySelector('.cart-count');
+        cartCount.textContent = cart.length;
+
+        // Initialize the page
+        function init() {
+            renderParkingSlots(parkingSlots);
+            setupEventListeners();
+        }
+
+        // Render parking slots
+        function renderParkingSlots(slots) {
+            const container = document.getElementById('parking-container');
+            container.innerHTML = '';
+
+            slots.forEach(slot => {
+                const isInCart = cart.some(item => item.id === slot.id);
+                const slotElement = document.createElement('div');
+                slotElement.className = 'parking-slot';
+                slotElement.dataset.type = slot.type;
+                slotElement.innerHTML = `
+                    <div class="slot-header">
+                        <h3>${slot.name}</h3>
+                        <span class="slot-status ${slot.status}">${slot.status.toUpperCase()}</span>
+                    </div>
+                    <div class="price">$${slot.price}/hr</div>
+                    <div class="features">
+                        <ul>
+                            ${slot.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <button class="btn btn-${isInCart ? 'secondary' : 'success'} btn-book" 
+                            onclick="toggleCart('${slot.id}')" ${slot.status !== 'available' ? 'disabled' : ''}>
+                        ${isInCart ? 'Remove from Cart' : 'Book Slot'}
+                    </button>
+                `;
+                container.appendChild(slotElement);
+            });
+        }
+
+        // Toggle slot in cart
+        function toggleCart(slotId) {
+            const slot = parkingSlots.find(s => s.id === slotId);
+            
+            if (cart.some(item => item.id === slotId)) {
+                cart = cart.filter(item => item.id !== slotId);
+            } else {
+                cart.push({
+                    id: slot.id,
+                    name: slot.name,
+                    price: slot.price,
+                    type: slot.type
+                });
+            }
+            
+            localStorage.setItem('parkingCart', JSON.stringify(cart));
+            cartCount.textContent = cart.length;
+            renderParkingSlots(parkingSlots);
+        }
+
+        // Filter slots by type
+        function filterSlots(type) {
+            if (type === 'all') {
+                renderParkingSlots(parkingSlots);
+            } else {
+                const filtered = parkingSlots.filter(slot => slot.type === type);
+                renderParkingSlots(filtered);
+            }
+        }
+
+        // Search slots
+        function searchSlots(query) {
+            const filtered = parkingSlots.filter(slot => 
+                slot.name.toLowerCase().includes(query.toLowerCase()) ||
+                slot.features.some(f => f.toLowerCase().includes(query.toLowerCase()))
+            );
+            renderParkingSlots(filtered);
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filterSlots(this.dataset.filter);
+                });
+            });
+
+            // Search functionality
+            document.getElementById('search-btn').addEventListener('click', function() {
+                const query = document.getElementById('search-input').value;
+                searchSlots(query);
+            });
+
+            document.getElementById('search-input').addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    searchSlots(this.value);
+                }
+            });
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

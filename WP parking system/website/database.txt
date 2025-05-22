@@ -1,0 +1,24 @@
+-- Create database
+CREATE DATABASE parking_management;
+USE parking_management;
+
+-- Users table (for authentication)
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(20),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_active BOOLEAN DEFAULT TRUE,
+    role ENUM('customer', 'staff', 'admin') DEFAULT 'customer'
+);
+
+-- Customer table (extends users)
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    license_number VARCHAR(50),
+    FOREIGN KEY (customer_id) REFERENCES users(user_id)
+);
