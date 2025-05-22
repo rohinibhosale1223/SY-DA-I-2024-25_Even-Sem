@@ -1,0 +1,256 @@
+/* Reset and base font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Theme colors */
+:root {
+  --primary-color: #412E46; /* deep purple */
+  --accent-color: #d4af37;  /* golden */
+  --hover-color: #b38b2e;
+  --overlay-color: rgba(65, 46, 70, 0.6);
+}
+
+/* Background video setup */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Semi-transparent overlay for readability */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-color);
+  z-index: -1;
+}
+
+/* Logo image styling */
+.logo {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  z-index: 1001; /* stays above navbar */
+  padding: 10px 0; /* optional spacing from the top */
+}
+
+.logo img {
+  height: 44px; /* match navbar height */
+  width: auto;
+  display: block;
+}
+
+
+/* Hero content */
+.hero-content {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 2rem;
+}
+
+/* Website name heading */
+.site-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-color); /* golden color */
+  margin-bottom: 1rem;
+}
+
+/* Main slogan */
+.hero-content h1 {
+  font-size: 3rem; /* Increased size for better visibility */
+  color: var(--accent-color); /* golden color */
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adding shadow for better contrast */
+}
+
+/* Subtitle */
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Get Started Button */
+.get-started-btn {
+  padding: 0.75rem 2rem;
+  background-color: transparent;
+  border: 2px solid var(--accent-color); /* Golden border */
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.get-started-btn:hover {
+  background-color: var(--accent-color); /* Golden background on hover */
+  color: var(--primary-color); /* Dark text color */
+}
+
+/* menu css starts from here 
+.
+.
+.
+*/
+/* Dark Purple Background for Menu Page */
+body {
+  background-color: #412E46; /* Deep purple background */
+  color: white; /* White text for contrast */
+}
+
+/* Menu Content */
+.menu-content {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 2rem;
+}
+
+/* Website name heading */
+.site-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #d4af37; /* Golden color */
+  margin-bottom: 1rem;
+}
+
+/* Subtitle */
+.menu-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Mood Buttons */
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 50px 20px;
+}
+
+.mood-button-container {
+  text-align: center;
+  width: 30%; /* 3 buttons per row */
+  margin: 10px;
+}
+
+.mood-button {
+  background-color: transparent;
+  border: 2px solid #d4af37; /* Golden border */
+  color: white;
+  font-size: 18px;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Button Hover Effects */
+.mood-button:hover {
+  background-color: #d4af37; /* Golden background on hover */
+  color: #412E46; /* Dark purple text */
+  transform: scale(1.1); /* Slightly larger on hover */
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #412E46; /* Purple footer */
+  color: white;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+
+#music-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#music-video {
+  width: 100%;
+  max-width: 560px;
+  height: 315px;
+}
+
+
+/* Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #412E46;
+  padding: 15px 0;
+  gap: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fcf3ff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #7b4b94;
+}
+/* Style for the logout button container */
+.logout-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10; /* Make sure it's above other elements */
+}
+
+/* Style for the logout button */
+.logout-btn {
+  background-color: #422F48;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #311f36; /* Darker color on hover */
+}
+
+
+

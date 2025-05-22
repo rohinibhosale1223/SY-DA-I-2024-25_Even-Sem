@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artwave | Recommendations</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Artwave</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Recommendations</a></li>
+          <li><a href="player.html">Mood Player</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="products">
+    <div class="container">
+      <h2>Our Recommendations</h2>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1491609154219-ffd3ffafd992?w=1200&auto=format&fit=crop&q=60" alt="Energetic Playlist">
+          <h4>Energetic Playlist</h4>
+          <p>Perfect tunes to get you moving.</p>
+          <p class="price">$49.99</p>
+          <a href="#" class="btn add-to-cart">Add to Cart</a>
+        </div>
+        <div class="product-card">
+          <img src="https://plus.unsplash.com/premium_photo-1663953665864-d5ca6e0c4c4d?w=1200&auto=format&fit=crop&q=60" alt="Calm Vibes">
+          <h4>Calm Vibes</h4>
+          <p>Relax with soothing melodies.</p>
+          <p class="price">$29.99</p>
+          <a href="#" class="btn add-to-cart">Add to Cart</a>
+          <button onclick="addProduct({name: 'Calm vibes', price: 29.99 })">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="https://plus.unsplash.com/premium_photo-1669665827401-30f37a4411f0?w=1200&auto=format&fit=crop&q=60" alt="Abstract Expression">
+          <h4>Abstract Expression</h4>
+          <p>Art that inspires creativity.</p>
+          <p class="price">$39.99</p>
+          <a href="#" class="btn add-to-cart">Add to Cart</a>
+        </div>
+        <div class="product-card">
+          <img src="https://plus.unsplash.com/premium_photo-1682308262087-a19aa679649d?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW9kZXJuJTIwYXJ0fGVufDB8MHwwfHx8MA%3D%3D" alt="Modern Art">
+          <h4>Modern Art</h4>
+          <p>Bold visuals for your space.</p>
+          <p class="price">$59.99</p>
+          <a href="#" class="btn add-to-cart">Add to Cart</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2025 Artwave. All Rights Reserved.</p>
+      <ul class="footer-links">
+        <li><a href="contact.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Terms of Service</a><span class="cart-count"></span></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.add-to-cart');
+      
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          const card = e.target.closest('.product-card');
+          if (!card) return;
+
+          const title = card.querySelector('h4').textContent;
+          const description = card.querySelector('p').textContent;
+          const imageUrl = card.querySelector('img').src;
+          const priceText = card.querySelector('.price').textContent.replace('$', '');
+          const price = parseFloat(priceText);
+
+          const product = { title, description, imageUrl, price, qty: 1 };
+
+          let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+          const existingProduct = cart.find(item => item.title === product.title);
+          if (existingProduct) {
+            existingProduct.qty += 1;
+          } else {
+            cart.push(product);
+          }
+
+          localStorage.setItem('cartItems', JSON.stringify(cart));
+          
+          alert(`${title} has been added to your cart!`);
+        });
+      });
+    });
+  </script>
+<!-- Logo -->
+<div class="logo">
+  <img src="logo.artwave.png" alt="Artwave Logo" />
+</div>
+
+</body>
+</html>
+
