@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Elements</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        const contentDiv = document.getElementById("content");
+        
+        // Create and append heading
+        const heading = document.createElement("h1");
+        heading.textContent = "Welcome to My Page";
+        contentDiv.appendChild(heading);
+
+        // Create and append paragraph
+        const para = document.createElement("p");
+        para.textContent = "This is a dynamically created paragraph.";
+        contentDiv.appendChild(para);
+
+        // Create and append image
+        const img = document.createElement("img");
+        img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1zwhySGCEBxRRFYIcQgvOLOpRGqrT3d7Qng&s"; // Corrected image URL
+        img.alt = "Sample Image";
+        img.style.display = "block";
+        img.style.marginTop = "10px";
+        contentDiv.appendChild(img);
+    </script>
+</body>
+</html>
