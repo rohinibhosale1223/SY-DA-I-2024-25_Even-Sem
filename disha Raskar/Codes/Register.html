@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModiWear | Register</title>
+    <style>
+.div1 {
+  background-color: #c0c0c0;
+  color: white;
+  padding: 40px 60px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.para1 {
+  color: #e91e63;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.display-inline {
+  display: inline-block;
+  width: 40%;
+}
+
+.div2 {
+  background-color: #fff0f5;
+  padding: 20px;
+  text-align: left;
+}
+
+.float-right {
+  float: right;
+  width: 25%;
+  padding: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+  margin-right: 10px;
+}
+
+.nav-button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #c2185b;
+}
+
+
+    body { font-family: Arial,
+ sans-serif;
+ background-color: white;
+ text-align: center; }
+
+form {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px #aaa;
+  display: inline-block;
+}
+input, select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+button:hover {
+  background-color: #c2185b;
+}
+    </style>
+</head>
+<body>
+<div
+  <div class="div1">
+    <a class="para1"><strong>Modiwear</strong></a>
+  </div>
+
+  <div class="div2">
+    <div class="display-inline">
+      <ul>
+        <li><a href="home.html" class="nav-button">Home</a></li>
+        <li><a href="wp practice.html" class="nav-button">About Us</a></li>
+        <li><a href="service.html" class="nav-button">Services</a></li>
+        <li><a href="ContactM.html" class="nav-button">Contact</a></li>
+        <li><a href="Product.html" class="nav-button">Product</a></li>
+      </ul>
+    </div>
+    <div class="div2 display-inline float-right">
+      <span id="Welcome" style="margin-right: 15px; font-weight: bold; color: #e91e63;"></span>
+      <a id="login" href="loginpage.html" class="nav-button">Login</a>
+      <a id="register" href="Register.html" class="nav-button">Register</a>
+      <button id="logout" class="nav-button" style="display: none;">Logout</button>
+      <a href="cart.html" class="nav-button">Cart <span id="cart-count">(0)</span></a>
+    </div>
+  </div>
+
+<h2>Create Your ModiWear Account</h2>
+
+<form id="registerForm">
+<h3> Registration Form</h3>
+<label for="username">UserName:</label>
+<input type="text" id="username" placeholder="Enter your username" required>
+
+<label for="contact">Contact Number:</label>
+<input type="int" id="contact" placeholder="Enter your contact number" required>
+
+        <label for="email">Email:</label>
+        <input type="email" class="box" placeholder="Enter Email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" class="box" placeholder="Enter Password" id="password" required>
+        <input type="submit" id="submit-btn" value="register">
+</form>
+<script>   
+const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const welcomeMessage = document.getElementById('Welcome');
+    const loginButton = document.getElementById('login');
+    const registerButton = document.getElementById('register');
+    const logoutButton = document.getElementById('logout');
+    const cartCount = document.getElementById('cart-count');
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+let cart = [];
+if (isLoggedIn === 'true' && currentUser) {
+    cart = JSON.parse(localStorage.getItem(`cart_${currentUser.email}`)) || [];
+} else {
+    cart = [];
+}
+
+  function updateCartCount() {
+    cartCount.textContent = `(${cart.length})`;
+  }
+
+  function addToCart(name, price) {
+    let product = { name, price };
+    if (!cart.find(item => item.name === name)) {
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        console.log("Cart Updated:", cart); // Debugging
+        updateCartCount();
+    } else {
+        console.log("Item already in cart:", name);
+    }
+}
+
+
+  window.onload = function() {
+    updateCartCount();
+    document.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", function() {
+        updateCartCount();
+      });
+    });
+  };
+    if (isLoggedIn === 'true' && currentUser) {
+      welcomeMessage.innerHTML = `Welcome, ${currentUser.name}!`;
+      loginButton.style.display = 'none';
+      registerButton.style.display = 'none';
+      logoutButton.style.display = 'inline-block';
+    } else {
+      welcomeMessage.innerHTML = '';
+      loginButton.style.display = 'inline-block';
+      registerButton.style.display = 'inline-block';
+      logoutButton.style.display = 'none';
+    }
+
+    logoutButton.addEventListener('click', function () {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('loggedInUser');
+      localStorage.removeItem('currentUser');
+      window.location.href = 'home.html';
+    });
+</script>
+</body>
+</html>

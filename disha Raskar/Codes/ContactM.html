@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+.div1 {
+  background-color: #c0c0c0;
+  color: white;
+  padding: 40px 60px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.para1 {
+  color: #e91e63;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.display-inline {
+  display: inline-block;
+  width: 40%;
+}
+
+.div2 {
+  background-color: #fff0f5;
+  padding: 20px;
+  text-align: left;
+}
+
+.float-right {
+  float: right;
+  width: 25%;
+  padding: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+  margin-right: 10px;
+}
+
+.nav-button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #c2185b;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #e91e63;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+header h1 {
+  margin: 0;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+.contact-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.contact-section h2 {
+  color: #e91e63;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+input, textarea {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button[type="submit"] {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button[type="submit"]:hover {
+  background-color: #c2185b;
+}
+.footer {
+  text-align: center;
+}
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+    </style>
+</head>
+<body>
+  <div class="div1">
+    <a class="para1"><strong>Modiwear</strong></a>
+  </div>
+
+<div class="div2">
+    <div class="display-inline">
+      <ul>
+        <li><a href="home.html" class="nav-button">Home</a></li>
+        <li><a href="wp practice.html" class="nav-button">About Us</a></li>
+        <li><a href="service.html" class="nav-button">Services</a></li>
+        <li><a href="ContactM.html" class="nav-button">Contact</a></li>
+        <li><a href="Product.html" class="nav-button">Product</a></li>
+      </ul>
+    </div>
+    <div class="div2 display-inline float-right">
+      <span id="Welcome" style="margin-right: 15px; font-weight: bold; color: #e91e63;"></span>
+      <a id="login" href="loginpage.html" class="nav-button">Login</a>
+      <a id="register" href="Register.html" class="nav-button">Register</a>
+      <button id="logout" class="nav-button" style="display: none;">Logout</button>
+      <a href="cart.html" class="nav-button">Cart <span id="cart-count">(0)</span></a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="contact-section">
+      <h2>Contact Us</h2>
+      <form onsubmit="return submitContactForm(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="form-feedback" style="color: green; margin-top: 10px;"></div>
+    </div>
+  </div>
+
+<script>
+   const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const welcomeMessage = document.getElementById('Welcome');
+    const loginButton = document.getElementById('login');
+    const registerButton = document.getElementById('register');
+    const logoutButton = document.getElementById('logout');
+    const cartCount = document.getElementById('cart-count');
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+let cart = [];
+if (isLoggedIn === 'true' && currentUser) {
+    cart = JSON.parse(localStorage.getItem(`cart_${currentUser.email}`)) || [];
+} else {
+    cart = [];
+}
+
+  function updateCartCount() {
+    cartCount.textContent = `(${cart.length})`;
+  }
+
+  function addToCart(name, price) {
+    let product = { name, price };
+    if (!cart.find(item => item.name === name)) {
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        console.log("Cart Updated:", cart); // Debugging
+        updateCartCount();
+    } else {
+        console.log("Item already in cart:", name);
+    }
+}
+
+
+  window.onload = function() {
+    updateCartCount();
+    document.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", function() {
+        updateCartCount();
+      });
+    });
+  };
+    if (isLoggedIn === 'true' && currentUser) {
+      welcomeMessage.innerHTML = `Welcome, ${currentUser.name}!`;
+      loginButton.style.display = 'none';
+      registerButton.style.display = 'none';
+      logoutButton.style.display = 'inline-block';
+    } else {
+      welcomeMessage.innerHTML = '';
+      loginButton.style.display = 'inline-block';
+      registerButton.style.display = 'inline-block';
+      logoutButton.style.display = 'none';
+    }
+
+    logoutButton.addEventListener('click', function () {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('loggedInUser');
+      localStorage.removeItem('currentUser');
+      window.location.href = 'home.html';
+    });
+
+</script>
+
+
+
+  <footer>
+    <p>&copy; 2025 Modiwear</p>
+  </footer>
+</body>
+</html>
