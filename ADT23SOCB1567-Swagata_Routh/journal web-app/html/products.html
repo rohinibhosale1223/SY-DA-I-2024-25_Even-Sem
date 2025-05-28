@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeadSpace - Journaling Products</title>
+    <link rel="stylesheet" href="../css/journal-products.css">
+</head>
+<body>
+    <header class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="journals.html">Your Journals</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="login.html" class="btn">Login</a></li>
+            <li><a href="cart.html" class="btn">Cart<span id="cart-products"></span></a> </li>
+        </ul>
+    </header>
+    
+    <section class="product-hero">
+        <h1>Discover the Perfect Journaling Tools</h1>
+        <p>Find beautifully designed journals, writing tools, and guided prompts to enhance your journaling experience.</p>
+    </section>
+    
+    <section class="product-list1">
+        <div class="product-item">
+            <img src="vintage-journal.jpg" alt="Classic Leather Journal">
+            <h2>Vintage Paperback Journal</h2>
+            <p>A premium handcrafted journal with high-quality paper.</p>
+            <span class="price">$29.99</span>
+            <button onclick='addProduct({name: "Classic Leather Journal", price: 29.99})'>Add to Cart</button>
+
+        </div>
+        
+        <div class="product-item">
+            <img src="bullet-journal.webp" alt="Guided Self-Discovery Journal">
+            <h2>Guided Self-Discovery Journal</h2>
+            <p>Designed to help you explore your thoughts with structured prompts.</p>
+            <span class="price">$24.99</span>
+            <button onclick='addProduct({name: "Guided Self-Discovery Journal", price: 43.45})'>Add to Cart</button>
+
+        </div>
+        
+        <div class="product-item">
+            <img src="vintage-journal.jpg" alt="Elegant Fountain Pen">
+            <h2>Elegant Fountain Pen</h2>
+            <p>Enhance your writing experience with this smooth-flowing ink pen.</p>
+            <span class="price">$14.99</span>
+            <button onclick='addProduct({name: "Elegant Fountain Pen", price: 14.99})'>Add to Cart</button>
+
+        </div>
+    </section>
+    <section product-list2>
+        <div class="product-item">
+            <img src="bullet-journal.webp" alt="Dream Catcher">
+            <h2>Dream Catcher</h2>
+            <p>Enhance your writing experience with this bullet journal.</p>
+            <span class="price">$9.04</span>
+            <button onclick='addProduct({name: "Dream Catcher", price: 9.04})'>Add to Cart</button>
+
+        </div>
+        <div class="product-item">
+            <img src="bullet-journal.webp" alt="Diary">
+            <h2>Diary</h2>
+            <p>Enhance your writing experience with this bullet journal.</p>
+            <span class="price">$9.04</span>
+            <button onclick='addProduct({name: "Diary", price: 9.04})'>Add to Cart</button>
+
+        </div>
+
+        <div class="product-item">
+            <img src="vintage-journal.jpg" alt="Heart bound">
+            <h2>Heart bound</h2>
+            <p>Enhance your writing experience with this bullet journal.</p>
+            <span class="price">$9.04</span>
+            <button onclick='addProduct({name: "Heart bound", price: 9.04})'>Add to Cart</button><br>
+        </div>
+    </section>
+        <footer>
+            <p>© 2025 MyJournal. All rights reserved.</p>
+          </footer>
+    
+    <div class="cart-products"></div>
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || []; // Retrieve cart or initialize empty array
+        const cartCount = document.getElementById("cart-products");
+    
+    
+        // Function to add a product to the cart
+        function addProduct(prodDetails) {
+            // Check if the product is already in the cart
+            if (!cart.find(e => e.name === prodDetails.name)) {
+                cart.push(prodDetails);
+                localStorage.setItem("cart", JSON.stringify(cart)); // Store in localStorage
+            }
+    
+            console.log("Updated Cart:", cart);
+            cartCount.innerText = `(${cart.length})`;; 
+        }
+    
+        // Function to initialize cart count on page load
+        function init() {
+            cart = JSON.parse(localStorage.getItem("cart")) || []; // Reload cart from storage
+            cartCount.innerText = `(${cart.length})`; // Update cart count in UI
+        }
+    
+        // Ensure init() runs when the page loads
+        window.onload = init;
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,241 @@
+:root {
+    --soft-pink: #fddcd3;
+    --light-cream: #fcf8ed;
+    --button-purple: #9b8cb9;
+    --button-green: #6aa89d;
+    --dark-text: #2d2d2d;
+    --nav-text: #4a4a4a;
+    --nav-bg: #fdf6ea;
+}
+
+/* General Body Styles */
+body {
+    margin: 5px;
+    font-family: 'Georgia', serif;
+    background-color: var(--soft-pink);
+    color: var(--dark-text);
+    text-align: center;
+    padding-top: 20px;
+    
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--nav-bg);
+    padding: 10px 0;
+    z-index: 1000;
+    display: flex;             /* Flexbox for horizontal layout */
+    justify-content: center;  /* Center items horizontally */
+    align-items: center;      /* Align items vertically in the center */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;            /* Horizontal list items */
+    gap: 2rem;               /* Spacing between links */
+}
+
+.navbar ul li {
+    margin: 0;               /* Remove any additional margins */
+}
+
+.navbar ul li a {
+    color: var(--nav-text);
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Georgia', serif;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: var(--button-purple); /* Change color on hover */
+}
+
+/* Hero Section */
+.hero {
+    background-color: var(--soft-pink);
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-top: 60px;  /* Offset for the fixed navbar */
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Georgia', serif;
+}
+
+.hero p {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+
+/* Buttons */
+.buttons {
+    margin-top: 2rem;
+    display: flex;
+    font-family: 'Georgia';
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+
+/* Message Section */
+.message-section {
+    background-color: var(--light-cream);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-radius: 0 0 12px 12px;
+}
+
+.message-section p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+    font-family: 'Georgia', serif;
+}
+
+/* Product List Section */
+.product-list1,
+section[product-list2] {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.product-item {
+    text-align: center;
+    width: 250px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-10px); /* Hover effect */
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-item h2 {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    color: var(--dark-text);
+}
+
+.product-item p {
+    font-size: 1.2rem;
+    font-family: 'Georgia', serif;
+    color: var(--nav-text);
+}
+
+.product-item .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    color: var(--button-green);
+}
+
+.product-item button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--button-purple);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Georgia', serif;
+    margin-top: 1rem;
+}
+
+.product-item button:hover {
+    background-color: #8a7ab2;
+}
+
+/* Form Styles for Contact/Checkout */
+form {
+    max-width: 400px;
+    margin: 5rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--dark-text);
+}
+
+form label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+form input.box {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+form button,
+form input[type="submit"] {
+    margin-top: 1rem;
+    padding: 0.75rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+#submit-btn {
+    background-color: var(--button-purple);
+    color: white;
+}
+
+#submit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.msg {
+    margin-top: 1rem;
+    text-align: center;
+    color: #d33;
+}
+
+footer {
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-size: 0.95rem;
+    margin-top: auto; /* Pushes the footer to bottom if content is less */
+   
+}

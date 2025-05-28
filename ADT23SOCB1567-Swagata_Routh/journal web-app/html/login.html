@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="journal-home.css">
+    <title>Login Form</title>
+</head>
+<body>
+    <form action="/login" method="post">
+        <h2>Login Form</h2>
+
+        <label for="username">User Name</label>
+        <input type="text" class="box" placeholder="Enter User name" id="username" name="username">
+
+        <label for="pass">Password</label>
+        <input type="password" class="box" placeholder="Enter Password" id="pass" name="pass">
+        
+        <button id="show-pass" type="button">Show Password</button>
+        <input type="submit" id="submit-btn" value="Login" disabled>
+        <div class="msg"></div>
+    </form>
+
+    <script>
+        var username = document.getElementById('username');
+        var pass = document.getElementById('pass');
+        var submit = document.getElementById('submit-btn');
+        var showPass = document.getElementById('show-pass');
+        var msgElement = document.querySelector('.msg');
+
+        var validUsername = false;
+        var validPass = false;
+
+        username.addEventListener('input', onUsernameInput);
+        pass.addEventListener('input', onPassInput);
+        showPass.addEventListener('click', togglePass);
+        submit.addEventListener('click', onSubmitClick);
+
+        function onUsernameInput(event) {
+            validUsername = event.target.value.length > 5;
+            username.style.borderColor = validUsername ? 'green' : 'red';
+            toggleSubmit();
+        }
+
+        function onPassInput(event) {
+            validPass = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(event.target.value);
+            pass.style.borderColor = validPass ? 'green' : 'red';
+            toggleSubmit();
+        }
+
+        function toggleSubmit() {
+            submit.disabled = !(validUsername && validPass);
+        }
+
+        function togglePass(event) {
+            event.preventDefault();
+            if (pass.getAttribute('type') === 'text') {
+                pass.setAttribute('type', 'password');
+                showPass.innerHTML = 'Show Password';
+            } else {
+                pass.setAttribute('type', 'text');
+                showPass.innerHTML = 'Hide Password';
+            }
+        }
+
+        function onSubmitClick(e) {
+            e.preventDefault();
+            var msg = '';
+             // Get the input values
+    let enteredUsername = username.value;
+    let enteredPassword = pass.value;
+
+    // Try to get the user data from localStorage using the entered username
+    let storedUser = localStorage.getItem(enteredUsername);
+        if (storedUser) {
+        let userObj = JSON.parse(storedUser);
+        if (userObj.password === enteredPassword) {
+                msg = 'Successfully logged in';
+                localStorage.setItem('userDetails', JSON.stringify({ username: enteredUsername }));
+                msgElement.textContent = msg;
+
+                // Redirect to index.html after 2 seconds
+                setTimeout(() => {
+                    window.location.href = `${window.location.href.slice(0, window.location.href.lastIndexOf('/'))}/index.html`;
+                }, 2000);
+            }
+            } else {
+                msg = 'Invalid Username or Password';
+                msgElement.textContent = msg;
+                console.log('error');
+            }
+        }
+    </script>
+</body>
+</html>

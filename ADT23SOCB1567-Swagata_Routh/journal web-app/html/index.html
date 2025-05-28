@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyJournal - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/journal-index.css">
+</head>
+<body>
+
+  <header>
+    <h1>MyJournal</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="/about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Sign Up</a>
+      <a href="products.html">Products</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Your Daily Space to Reflect</h2>
+    <p>Write, reflect, and grow with MyJournal. Safe, private, and beautifully simple.</p>
+    <a href="journal-entries.html" class="cta-button">Start Journaling</a>
+  </section>
+
+  <section class="section">
+    <div class="cards">
+      <div class="card">
+        <img src="../images/images.png" alt="MyJournal Banner" width="600" />
+
+        <h3>Track Your Mood</h3>
+        <p>Log your emotions with mood tags and visual cues to understand your mental journey.</p>
+      </div>
+      <div class="card">
+        <h3>Search Your Thoughts</h3>
+        <p>Use filters and keywords to easily find past entries by date or content.</p>
+      </div>
+      <div class="card">
+        <h3>Rich Text Editor</h3>
+        <p>Format your journal with bold, italics, bullet lists and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 MyJournal. All rights reserved.</p>
+  </footer>
+  <script>
+    function init() {
+        const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+        if (userDetails && userDetails.username) {
+            document.getElementById("login-btn").style.display = 'none';
+            document.getElementById("welcome").textContent = `Welcome ${userDetails.username}`;
+        }
+    }
+    window.onload = init;
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Journal Entries</title>
+  <link rel="stylesheet" href="journal-entries.css" />
+</head>
+<body>
+  <header>
+    <h1>MyJournal</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="journal-container">
+    <h2>New Journal Entry</h2>
+    <form class="entry-form">
+      <label for="title">Title</label>
+      <input type="text" id="title" class="input-box" placeholder="Enter your title">
+
+      <label for="entry">Entry</label>
+      <textarea id="entry" class="input-box" rows="10" placeholder="Write your thoughts..."></textarea>
+
+      <button type="submit" class="save-button">Save Entry</button>
+    </form>
+
+    <div class="entries-list">
+      <h3>Previous Entries</h3>
+      <!-- Placeholder for saved entries -->
+      <div class="entry-card">
+        <h4>Grateful Morning</h4>
+        <p>I woke up feeling thankful and ready for the day...</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

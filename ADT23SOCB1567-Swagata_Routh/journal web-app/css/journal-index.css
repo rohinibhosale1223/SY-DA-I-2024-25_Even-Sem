@@ -1,0 +1,132 @@
+    :root {
+      --soft-pink: #fddcd3;
+      --light-cream: #fcf8ed;
+      --button-purple: #9b8cb9;
+      --button-green: #6aa89d;
+      --dark-text: #2d2d2d;
+      --nav-text: #4a4a4a;
+      --nav-bg: #fdf6ea;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: var(--soft-pink);
+      color: var(--dark-text);
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    /* Header & Nav */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--nav-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+      border-radius: 0 0 12px 12px;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--nav-text);
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--nav-text);
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--button-purple);
+    }
+
+    .hero {
+      padding: 1rem 1rem;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      background-color: var(--button-purple);
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: var(--button-green);
+    }
+
+    .hero img {
+      margin-top: 2rem;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .section {
+      padding: 2rem 1rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background-color: var(--light-cream);
+      padding: 1.5rem;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: var(--button-purple);
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding: 1rem;
+      background-color: var(--nav-bg);
+      border-top: 1px solid #e0e0e0;
+    }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeadSpace - Journaling Products</title>
+    <link rel="stylesheet" href="css/journal-entries.css">
+    <body>
+        <header class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="journals.html">Your Journals</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html" class="btn">Login</a></li>
+               
+            </ul>
+        </header>
+        <div class="product">
+        </div>
+    <script>
+
+        const heading = document.createElement("h2");
+        const node1 = document.createTextNode("This is the very beginning");
+        heading.appendChild(node1);
+        const element2 = document.querySelector(".product");
+        element2.appendChild(heading);
+
+        
+        const para=document.createElement("p");
+        const node = document.createTextNode("Swaggytoons");
+        para.appendChild(node);
+        const element =document.querySelector(".product");
+        element.appendChild(para);
+
+        let img = document.createElement("img");
+        img.src="bullet-journal.webp";
+        document.querySelector(".product").appendChild(img);
+
+    
+
+        
+        
+    </script>
+     <footer>
+        &copy; 2025 Jostar. All rights reserved.
+    </footer>
+    
+</body>
+

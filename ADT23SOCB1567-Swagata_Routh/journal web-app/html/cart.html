@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeadSpace - Journaling Products</title>
+    <link rel="stylesheet" href="../css/journal-products.css">
+    </head>
+    <body>
+        <header class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="journals.html">Your Journals</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html" class="btn">Login</a></li>
+                <li><a href="cart.html" class="btn">Cart<span id="cart-products"></span></a> </li>
+               
+            </ul>
+        </header>
+        <h3>Cart products from local Storage</h3>
+        <div class="cart-products">
+        </div>
+        <script>
+            // Get cart items from localStorage or set to an empty array if null
+            let cart2 = JSON.parse(localStorage.getItem('cart')) || [];
+            let total = 0;
+        
+            // Calculate total price
+            cart2.forEach(item => {
+                total += item.price;
+            });
+        
+            console.log("Total Price:", total);
+        
+            // Update cart count beside "Cart" in the navbar
+            const cartCount = document.getElementById("cart-products");
+            cartCount.textContent = `(${cart2.length})`;
+        
+            // Select cart display container
+            const cartProducts = document.querySelector('.cart-products');
+        
+            // Display each product
+            cart2.forEach(item => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add("product-item");
+        
+                const productName = document.createElement('h2');
+                productName.textContent = item.name;
+                productDiv.appendChild(productName);
+        
+                const productPrice = document.createElement('h5');
+                productPrice.textContent = "Price: $" + item.price.toFixed(2);
+                productDiv.appendChild(productPrice);
+        
+                cartProducts.appendChild(productDiv);
+            });
+        
+            // Display total price section
+            const priceContainer = document.createElement('div');
+            priceContainer.classList.add('cart-price');
+        
+            const priceTitle = document.createElement('h2');
+            priceTitle.textContent = "Price Details:";
+            priceContainer.appendChild(priceTitle);
+        
+            const totalAmount = document.createElement('h5');
+            totalAmount.textContent = "Total Cart Amount: $" + total.toFixed(2);
+            priceContainer.appendChild(totalAmount);
+        
+            cartProducts.appendChild(priceContainer);
+        
+            // Function to add product to cart
+            function addProduct(product) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                // Check if the product already exists in the cart
+                if (!cart.find(item => item.name === product.name)) {
+                    cart.push(product);
+                    localStorage.setItem("cart", JSON.stringify(cart)); // Store updated cart in localStorage
+                }
+        
+                // Update the cart count in the navbar
+                cartCount.textContent = `(${cart.length})`;
+            }
+        </script>
+        
+        
+        
+</body>
+</html>
+
+

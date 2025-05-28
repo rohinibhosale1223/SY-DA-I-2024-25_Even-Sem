@@ -1,0 +1,152 @@
+
+  :root {
+  --soft-pink: #fddcd3;
+  --light-cream: #fcf8ed;
+  --button-purple: #9b8cb9;
+  --button-green: #6aa89d;
+  --dark-text: #2d2d2d;
+  --nav-text: #4a4a4a;
+  --nav-bg: #fdf6ea;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: var(--soft-pink);
+  color: var(--dark-text);
+  padding-top: 100px;
+  text-align: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--nav-bg);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0 0 12px 12px;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: var(--nav-text);
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--nav-text);
+  font-weight: bold;
+}
+
+main {
+  max-width: 700px;
+  margin: 10px;
+  padding: 2rem 1rem;
+}
+
+form {
+  background-color: var(--light-cream);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  margin: 2rem;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Georgia', serif;
+ 
+}
+
+button {
+  background-color: var(--button-purple);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--button-green);
+}
+
+.entry {
+  background-color: var(--light-cream);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 2rem;
+}
+
+.entry h3 {
+  margin-bottom: 0.5rem;
+  color: var(--button-purple);
+}
+
+.entry p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.actions button {
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: var(--nav-bg);
+  border-top: 1px solid #ddd;
+}
+
+ .delete-button {
+  background-color: #e57373;
+  color: white;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #c62828;
+}
+.cancel-edit {
+    display: inline-block;
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #999;
+    font-weight: bold;
+}

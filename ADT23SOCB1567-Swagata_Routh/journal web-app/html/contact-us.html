@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MyJournal</title>
+    <link rel="stylesheet" href="../css/journal-contact.css">
+</head>
+<body>
+
+    <header>
+        <h1>MyJournal</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Sign Up</a>
+            <a href="products.html">Products</a>
+
+          </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you! Please fill out the form below to get in touch.</p>
+    </section>
+
+    <form action="/submit-contact" method="post">
+        <label for="name">Full Name</label>
+        <input type="text" class="box" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" class="box" id="email" name="email" placeholder="Your Email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" class="box" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+        <input type="submit" id="submit-btn" value="Send Message">
+    </form>
+
+    <section class="message-section">
+        <p>Thank you for reaching out! We aim to respond to all queries within 24–48 hours.</p>
+    </section>
+
+</body>
+</html>
